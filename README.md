@@ -1,2 +1,2 @@
-# sniffit
+# SniffIt
 Wine sniffer app !
