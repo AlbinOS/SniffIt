@@ -1,10 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# All Vagrant configuration is done below. The "2" in Vagrant.configure
-# configures the configuration version (we support older styles for
-# backwards compatibility). Please don't change it unless you know what
-# you're doing.
+# Vagrant configuration is done below.
 Vagrant.configure(2) do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
@@ -53,7 +50,7 @@ Vagrant.configure(2) do |config|
     # Customize the amount of cpus on the VM:
     vb.cpus= 2
   end
-  #
+
   # View the documentation for the provider you are using for more
   # information on available options.
 
@@ -64,11 +61,21 @@ Vagrant.configure(2) do |config|
   #   push.app = "YOUR_ATLAS_USERNAME/YOUR_APPLICATION_NAME"
   # end
 
-  # Use Chef Solo to provision our virtual machine
-  config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = ["cookbooks"]
+  # Provision our virtual machine
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update
+    sudo apt-get autoremove -y
+    sudo apt-get autoclean -y
 
-    chef.add_recipe "apt"
-    chef.add_recipe "build-essential"
-  end
+    sudo apt-get install -y build-essential
+    sudo apt-get install -y git
+    sudo apt-get install -y curl
+  SHELL
+
+  # Install rvm and latest ruby 2.2
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    curl -sSL https://get.rvm.io | bash -s stable
+    rvm install ruby-2.2-head
+  SHELL
 end
