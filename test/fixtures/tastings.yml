@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  taster: MyString
+  body: MyText
+  wine_id: 
+
+two:
+  taster: MyString
+  body: MyText
+  wine_id: 

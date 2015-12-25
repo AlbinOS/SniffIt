@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # Wines
-  resources :wines
+  resources :wines do
+    resources :tastings
+  end
 
   # Homepage
   root 'welcome#index'

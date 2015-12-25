@@ -14,3 +14,17 @@
 
 = link_to 'Back', wines_path
 = link_to 'Edit', edit_wine_path(@wine)
+
+.h2 Add a tasting
+
+= form_for([@wine, @wine.tastings.build]) do |f|
+  .p
+    = f.label :taster
+    = f.text_field :taster
+
+  .p
+    = f.label :body
+    = f.text_area :body
+
+  .p
+    = f.submit
