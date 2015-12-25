@@ -1,0 +1,23 @@
+- if @wine.errors.any?
+  .error_explanation
+    .h2= "#{pluralize(@wine.errors.count, "errors")} prohibited this wine from being saved:"
+    .ul
+      - @wine.errors.full_messages.each do |msg|
+        .li= msg
+
+= form_for @wine do |f|
+  .p
+    = f.label :appellation
+    = f.text_field :appellation
+
+  .p
+    = f.label :vintage
+    = f.text_field :vintage
+
+  .p
+    = f.label :domaine
+    = f.text_field :domaine
+
+  .p
+    = link_to 'Back', wines_path
+    = f.submit

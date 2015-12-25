@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appellation: MyString
+  vintage: 1
+  domaine: MyString
+
+two:
+  appellation: MyString
+  vintage: 1
+  domaine: MyString

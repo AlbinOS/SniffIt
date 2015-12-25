@@ -1,0 +1,16 @@
+.h1 Show wine
+
+.p
+  %strong Appellation
+  = @wine.appellation
+
+.p
+  %strong Vintage
+  = @wine.vintage
+
+.p
+  %strong Domaine
+  = @wine.domaine
+
+= link_to 'Back', wines_path
+= link_to 'Edit', edit_wine_path(@wine)

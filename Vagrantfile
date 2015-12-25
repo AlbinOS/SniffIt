@@ -68,8 +68,9 @@ Vagrant.configure(2) do |config|
     sudo apt-get autoclean -y
 
     sudo apt-get install -y build-essential
-    sudo apt-get install -y git
     sudo apt-get install -y curl
+    sudo apt-get install -y git
+    sudo apt-get install -y nodejs
   SHELL
 
   # Install rvm and latest ruby 2.2
@@ -77,5 +78,6 @@ Vagrant.configure(2) do |config|
     gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
     curl -sSL https://get.rvm.io | bash -s stable
     rvm install ruby-2.2-head
+    cd /vagrant && bundle install
   SHELL
 end
