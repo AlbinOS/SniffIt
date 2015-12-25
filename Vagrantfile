@@ -76,10 +76,16 @@ Vagrant.configure(2) do |config|
 
   # Install rvm and latest ruby 2.2
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
-    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    cd /tmp/
+    curl -#LO https://rvm.io/mpapis.asc
+    gpg --import mpapis.asc
+    cd
+
     curl -sSL https://get.rvm.io | bash -s stable
+
     source /home/vagrant/.bash_profile
     source /home/vagrant/.bashrc
+
     rvm install ruby --latest
     cd /vagrant && bundle install
   SHELL
