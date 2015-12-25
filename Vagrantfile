@@ -64,6 +64,7 @@ Vagrant.configure(2) do |config|
   # Provision our virtual machine
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
+    sudo apt-get upgrade -y
     sudo apt-get autoremove -y
     sudo apt-get autoclean -y
 
@@ -77,7 +78,9 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
     curl -sSL https://get.rvm.io | bash -s stable
-    rvm install ruby-2.2-head
+    source /home/vagrant/.bash_profile
+    source /home/vagrant/.bashrc
+    rvm install ruby --latest
     cd /vagrant && bundle install
   SHELL
 end
