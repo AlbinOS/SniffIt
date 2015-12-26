@@ -79,13 +79,16 @@ Vagrant.configure(2) do |config|
     sudo /usr/sbin/update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
     sudo apt-get install -y postgresql libpq-dev
+
     sudo mkdir -p /usr/local/pgsql/data
     sudo chown postgres:postgres /usr/local/pgsql/data
-    sudo su postgres
-    /usr/lib/postgresql/9.3/bin/initdb -D /usr/local/pgsql/data
-    createuser -s -d walle
+
+    sudo -u postgres /usr/lib/postgresql/9.3/bin/initdb -D /usr/local/pgsql/data
+
+    sudo -u postgres createuser -s -d walle
     sudo -u postgres psql -c "ALTER USER walle with encrypted password 'eve';"
-    sed -i 's/local   all             all                                     peer/local   all             all                                     md5/' pg_hba.conf
+
+    sudo sed -i 's/local   all             all                                     peer/local   all             all                                     md5/' /etc/postgresql/9.3/main/pg_hba.conf
     sudo service postgresql restart
   SHELL
 
