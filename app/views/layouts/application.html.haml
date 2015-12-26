@@ -5,11 +5,23 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-= link_to('Logout', destroy_user_session_path, :method => :delete)
+%body
 
-%p.notice
-  = notice
-%p.alert
-  = alert
+  .container
 
-= yield
+    - # Navigation bar
+    %nav.navbar.navbar-light.bg-faded
+      %a.navbar-brand{:href => "#"} wine-pex
+      .nav.navbar-nav
+        = link_to root_path, class: 'nav-item nav-link active' do
+          Home
+          %span.sr-only (current)
+        = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-item nav-link pull-xs-right'
+
+    %p.notice
+      = notice
+    %p.alert
+      = alert
+
+    - # This is where the page will be rendered
+    = yield
