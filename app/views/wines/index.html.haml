@@ -1,18 +1,19 @@
-.h1 Listing all wines
+%h1 Listing all wines
 
-.h2= link_to 'Add wine', new_wine_path
+%h2= link_to 'Add wine', new_wine_path, class: 'btn btn-primary', role: 'button'
 
-.table
-  .tr
-    .th Appellation
-    .th Domaine
-    .th Vintage
-
-  - @wines.each do |wine|
-    .tr
-      .td= wine.appellation
-      .td= wine.domaine
-      .td= wine.vintage
-      .td= link_to 'Show', wine_path(wine)
-      .td= link_to 'Edit', edit_wine_path(wine)
-      .td= link_to 'Destroy', wine_path(wine), method: :delete, data: { confirm: 'Are you sure ?'}
+%table.table
+  %thead
+    %tr
+      %th Appellation
+      %th Domaine
+      %th Vintage
+  %tbody
+    - @wines.each do |wine|
+      %tr
+        %td= wine.appellation
+        %td= wine.domaine
+        %td= wine.vintage
+        %td= link_to 'Show', wine_path(wine), class: 'btn btn-primary', role: 'button'
+        %td= link_to 'Edit', edit_wine_path(wine), class: 'btn btn-warning', role: 'button'
+        %td= link_to 'Destroy', wine_path(wine), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger', role: 'button'

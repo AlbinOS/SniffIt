@@ -1,0 +1,18 @@
+- if @tasting.errors.any?
+  .error_explanation
+    %h2= "#{pluralize(@tasting.errors.count, "errors")} prohibited this tasting from being saved:"
+    %ul
+      - @tasting.errors.full_messages.each do |msg|
+        %li= msg
+
+= form_for([@wine, @wine.tastings.build]) do |f|
+  %p
+    = f.label :taster
+    = f.text_field :taster
+
+  %p
+    = f.label :body
+    = f.text_area :body
+
+  %p
+    = f.submit 'Create tasting', class: "btn btn-primary"

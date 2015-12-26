@@ -1,30 +1,22 @@
-.h1 Show wine
+%h1 Show wine
 
-.p
+%p
   %strong Appellation
   = @wine.appellation
 
-.p
+%p
   %strong Vintage
   = @wine.vintage
 
-.p
+%p
   %strong Domaine
   = @wine.domaine
 
-= link_to 'Back', wines_path
-= link_to 'Edit', edit_wine_path(@wine)
+%h2 Tastings
+= render @wine.tastings
 
-.h2 Add a tasting
+%h2 Add a tasting
+= render 'tastings/form'
 
-= form_for([@wine, @wine.tastings.build]) do |f|
-  .p
-    = f.label :taster
-    = f.text_field :taster
-
-  .p
-    = f.label :body
-    = f.text_area :body
-
-  .p
-    = f.submit
+= link_to 'Back', wines_path, class: "btn btn-primary", role: "button"
+= link_to 'Edit', edit_wine_path(@wine), class: "btn btn-warning", role: "button"

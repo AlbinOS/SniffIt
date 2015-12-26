@@ -74,6 +74,21 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y nodejs
   SHELL
 
+  # Install postgresql
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    sudo /usr/sbin/update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+    sudo apt-get install -y postgresql libpq-dev
+    sudo mkdir -p /usr/local/pgsql/data
+    sudo chown postgres:postgres /usr/local/pgsql/data
+    sudo su postgres
+    /usr/lib/postgresql/9.3/bin/initdb -D /usr/local/pgsql/data
+    createuser -s -d walle
+    sudo -u postgres psql -c "ALTER USER walle with encrypted password 'eve';"
+    sed -i 's/local   all             all                                     peer/local   all             all                                     md5/' pg_hba.conf
+    sudo service postgresql restart
+  SHELL
+
   # Install rvm and latest ruby 2.2
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     cd /tmp/
@@ -88,5 +103,9 @@ Vagrant.configure(2) do |config|
 
     rvm install ruby --latest
     cd /vagrant && bundle install
+
+    RAILS_ENV=development rake db:create
+    RAILS_ENV=development rake db:migrate
   SHELL
+
 end

@@ -1,4 +1,5 @@
 class WinesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @wines = Wine.all
@@ -6,6 +7,7 @@ class WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
+    @tasting = Tasting.new
   end
 
   def new

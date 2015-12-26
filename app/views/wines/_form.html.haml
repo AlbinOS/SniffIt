@@ -1,23 +1,23 @@
 - if @wine.errors.any?
   .error_explanation
-    .h2= "#{pluralize(@wine.errors.count, "errors")} prohibited this wine from being saved:"
-    .ul
+    %h2= "#{pluralize(@wine.errors.count, "errors")} prohibited this wine from being saved:"
+    %ul
       - @wine.errors.full_messages.each do |msg|
-        .li= msg
+        %li= msg
 
 = form_for @wine do |f|
-  .p
+  %p
     = f.label :appellation
     = f.text_field :appellation
 
-  .p
+  %p
     = f.label :vintage
     = f.text_field :vintage
 
-  .p
+  %p
     = f.label :domaine
     = f.text_field :domaine
 
-  .p
-    = link_to 'Back', wines_path
-    = f.submit
+  %p
+    = link_to 'Back', wines_path, class: 'btn btn-primary', role: 'button'
+    = f.submit 'Submit', class: 'btn btn-primary'
