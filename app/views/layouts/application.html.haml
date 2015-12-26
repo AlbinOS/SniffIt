@@ -5,23 +5,35 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
-%body
-
-  .container
-
+  %body
     - # Navigation bar
-    %nav.navbar.navbar-light.bg-faded
+    %nav.navbar.navbar-fixed-top.navbar-dark.bg-inverse
       %a.navbar-brand{:href => "#"} wine-pex
       .nav.navbar-nav
         = link_to root_path, class: 'nav-item nav-link active' do
           Home
           %span.sr-only (current)
-        = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-item nav-link pull-xs-right'
+        - if user_signed_in?
+          = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-item nav-link pull-xs-right'
+        - else
+          = link_to 'Login', new_user_session_path, class: 'nav-item nav-link pull-xs-right'
 
-    %p.notice
-      = notice
-    %p.alert
-      = alert
+    .jumbotron
+      .container
+        - # Notice pop-up
+        - if notice
+          .alert.alert-success.alert-dismissible.fade.in{:role => "alert"}
+            %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+              %span{"aria-hidden" => "true"} &times;
+            %strong= notice
 
-    - # This is where the page will be rendered
-    = yield
+        - # Alert pop-up
+        - if alert
+          .alert.alert-danger.alert-dismissible.fade.in{:role => "alert"}
+            %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+              %span{"aria-hidden" => "true"} &times;
+            %strong= alert
+
+        - # This is where data will be rendered
+        = yield
+
