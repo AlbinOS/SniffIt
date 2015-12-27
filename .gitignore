@@ -36,3 +36,6 @@ bower.json
 
 # Ignore vagrant files
 .vagrant
+
+# Ignore precompiled assets for the moment
+/public/assets

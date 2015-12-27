@@ -19,7 +19,8 @@ Vagrant.configure(2) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  config.vm.network "forwarded_port", guest: 80, host: 8080 #nginx
+  config.vm.network "forwarded_port", guest: 3000, host: 3000 #rails
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -92,6 +93,19 @@ Vagrant.configure(2) do |config|
     sudo service postgresql restart
   SHELL
 
+  # Install nginx
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ABF5BD827BD9BF62
+    echo 'deb http://nginx.org/packages/ubuntu/ trusty nginx' > /tmp/nginx.list
+    sudo cp /tmp/nginx.list /etc/apt/sources.list.d/nginx.list
+
+    sudo apt-get update
+    sudo apt-get install -y nginx
+
+    sudo ln -s /vagrant/config/nginx.conf /etc/nginx/conf.d/wine-pex.conf
+    sudo service nginx restart
+  SHELL
+
   # Install rvm and latest ruby 2.2
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     cd /tmp/
@@ -109,6 +123,7 @@ Vagrant.configure(2) do |config|
 
     RAILS_ENV=development rake db:create
     RAILS_ENV=development rake db:migrate
+    RAILS_ENV=development rake assets:precompile
   SHELL
 
 end

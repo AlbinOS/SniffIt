@@ -1,12 +1,20 @@
 = form_for @wine do |f|
   %p
-    = f.full_text_field :appellation
+    = f.label :appellation
+    = f.text_field :appellation
+    - if @wine.errors[:appellation].any?
+      = f.label :appellation do
+        - @wine.errors[:appellation].join(', ').downcase
 
   %p
     = f.label :vintage
-    = f.text_field :vintage
+    = f.number_field :vintage
+    - if @wine.errors[:vintage].any?
+      = f.label :vintage do
+        - @wine.errors[:vintage ].join(', ').downcase
 
   %p
+    = f.label :domaine
     = f.text_field :domaine
     - if @wine.errors[:domaine].any?
       = f.label :domaine do
