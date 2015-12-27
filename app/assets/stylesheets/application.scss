@@ -14,3 +14,17 @@
 
 // Custom bootstrap variables must be set or import before bootstrap itself.
 @import "bootstrap";
+
+$danger_dark: #C0392B;
+
+form {
+  .field_with_errors {
+    display: inline;
+    label {
+      color: $danger_dark;
+    }
+    input {
+      border: 1px $danger_dark solid !important;
+    }
+  }
+}

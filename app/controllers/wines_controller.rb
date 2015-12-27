@@ -24,6 +24,7 @@ class WinesController < ApplicationController
     if @wine.save
       redirect_to @wine
     else
+      flash.now[:alert] = "Your data were not accepted, check your form below !"
       render 'new'
     end
   end
@@ -34,6 +35,7 @@ class WinesController < ApplicationController
     if @wine.update(wine_params)
       redirect_to @wine
     else
+      flash.now[:alert] = "Your data were not accepted, check your form below !"
       render 'edit'
     end
   end

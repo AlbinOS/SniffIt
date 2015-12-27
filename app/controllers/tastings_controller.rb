@@ -7,6 +7,7 @@ class TastingsController < ApplicationController
     if @tasting.save
       redirect_to wine_path(@wine)
     else
+      flash.now[:alert] = "Your data were not accepted, check your form below !"
       render "wines/show"
     end
   end
