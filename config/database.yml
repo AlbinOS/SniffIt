@@ -17,8 +17,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
 development:
@@ -26,6 +24,7 @@ development:
   database: wine-pex_development
   username: walle
   password: eve
+  pool: 16
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -76,3 +75,4 @@ production:
   database: wine-pex_production
   username: wall-e
   password: <%= ENV['WINE-PEX_DATABASE_PASSWORD'] %>
+  pool: 128
