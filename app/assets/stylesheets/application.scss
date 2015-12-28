@@ -12,19 +12,29 @@
  *
  */
 
+$primary: #1ABC9C;
+$primary_dark: #16A085;
+$success: #2ECC71;
+$success_dark: #27AE60;
+$info: #3498DB;
+$info_dark: #2980B9;
+$purple: #9B59B6;
+$purple_dark: #8E44AD;
+$inverse: #34495E;
+$inverse_dark: #2C3E50;
+$warning: #F1C40F;
+$warning_dark: #F39C12;
+$orange: #E67E22;
+$orange_dark: #D35400;
+$danger: #E74C3C;
+$danger_dark: #C0392B;
+$clear: #ECF0F1;
+$clear_dark: #BDC3C7;
+$disable: #95A5A6;
+$disable_dark: #7F8C8D;
+
 // Custom bootstrap variables must be set or import before bootstrap itself.
 @import "bootstrap";
 
-$danger_dark: #C0392B;
-
-form {
-  .field_with_errors {
-    display: inline;
-    label {
-      color: $danger_dark;
-    }
-    input {
-      border: 1px $danger_dark solid !important;
-    }
-  }
-}
+// Scss provided by us
+@import "./**/*"
