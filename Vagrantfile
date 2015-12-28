@@ -103,7 +103,7 @@ Vagrant.configure(2) do |config|
     sudo apt-get install -y nginx
 
     sudo rm /etc/nginx/conf.d/*.conf 
-    sudo ln -s /vagrant/config/nginx.conf /etc/nginx/conf.d/wine-pex.conf
+    sudo ln -s /vagrant/config/nginx/development.conf /etc/nginx/conf.d/wine-pex.conf
     sudo service nginx restart
   SHELL
 
