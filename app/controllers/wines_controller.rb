@@ -7,7 +7,7 @@ class WinesController < ApplicationController
 
   def show
     @wine = Wine.find(params[:id])
-    @tasting = Tasting.new
+    @tasting = @wine.tastings.build
   end
 
   def new

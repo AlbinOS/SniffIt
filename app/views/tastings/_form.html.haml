@@ -1,27 +1,4 @@
-= form_for([@wine, @wine.tastings.build]) do |f|
-  %p
-    - if @tasting.errors[:taster].any?
-      .field_with_errors
-        = f.label :taster
-    - else
-      = f.label :taster
-
-    - if @tasting.errors[:taster].any?
-      .field_with_errors
-        = f.text_field :taster
-    - else
-      = f.text_field :taster
-    - if @tasting.errors[:taster].any?
-      .field_with_errors
-        = f.label :taster do
-          - @tasting.errors[:taster].join(', ').downcase
-
-  %p
-    = f.label :body
-    = f.text_area :body
-    - if @tasting.errors[:body].any?
-      = f.label :body do
-        - @tasting.errors[:body].join(', ').downcase
-
-  %p
-    = f.submit 'Create tasting', class: "btn btn-primary"
+= form_for([@wine, @tasting]) do |f|
+  = f.full_text_field :taster, placeholder: 'Your name', class: 'form-control', required: true
+  = f.full_text_field :body, placeholder: 'This is très fruité !', class: 'form-control', required: true
+  = f.submit 'Create tasting', class: "btn btn-primary"

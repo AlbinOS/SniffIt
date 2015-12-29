@@ -1,11 +1,10 @@
-- if tasting.errors.empty?
-  %p
-    %strong Taster:
-    = tasting.taster
+%p
+  %strong Taster:
+  = tasting.taster
 
-  %p
-    %strong Comment:
-    = tasting.body
+%p
+  %strong Comment:
+  = tasting.body
 
-  %p
-    = link_to 'Destroy Tasting', [tasting.wine, tasting], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', role: 'button'
+%p
+  = link_to 'Destroy Tasting', [tasting.wine, tasting], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', role: 'button'

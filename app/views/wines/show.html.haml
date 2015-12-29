@@ -12,11 +12,14 @@
   %strong Domaine
   = @wine.domaine
 
-%h2 Tastings
-= render @wine.tastings
-
 %h2 Add a tasting
 = render 'tastings/form'
+
+%h2 Tastings
+- @wine.tastings.each do |tasting|
+  - if not tasting.id.blank? and tasting.errors.empty? 
+    = render tasting
+
 
 = link_to 'Back', wines_path, class: "btn btn-primary", role: "button"
 = link_to 'Edit', edit_wine_path(@wine), class: "btn btn-warning", role: "button"
