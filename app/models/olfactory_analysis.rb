@@ -1,8 +1,8 @@
 class OlfactoryAnalysis < ActiveRecord::Base
   belongs_to :tasting
 
-  enum intensity: [:very_weak, :low, :pretty_weak, :average, :very_aromatic, :aromatic, :powerful]
-  enum diversity: [:aromatic, :rich, :complex]
+  enum intensity: [:very_weak, :low, :pretty_weak, :normal, :aromatic, :very_aromatic, :powerful]
+  enum diversity: [:aromatic_simple, :rich, :complex]
   enum quality: [:gross, :vulgar, :ordinary, :fine, :distinguished]
 
   has_many :olfactory_natures
