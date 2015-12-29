@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  acidity: 
+  alcohol: 
+  mellowness: 
+  tannin_quantity: 
+  tannin_quality: 
+  tasting_id: 
+
+two:
+  acidity: 
+  alcohol: 
+  mellowness: 
+  tannin_quantity: 
+  tannin_quality: 
+  tasting_id: 
