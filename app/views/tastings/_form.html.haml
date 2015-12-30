@@ -1,4 +1,10 @@
 = form_for([@wine, @tasting]) do |f|
   = f.full_text_field :taster, placeholder: 'Your name', class: 'form-control', required: true
-  = f.full_text_field :body, placeholder: 'This is très fruité !', class: 'form-control', required: true
   = f.submit 'Create tasting', class: "btn btn-primary"
+
+= form_tag [@wine, @tasting], method: 'post' do
+  = full_text_field @tasting, :taster, placeholder: 'Your name', class: 'form-control', required: true
+
+  = select_tag :visual_analysis_color, options_for_select(VisualAnalysis.colors)
+
+  = submit_tag 'Create tasting', class: "btn btn-primary"

@@ -7,5 +7,4 @@ class Tasting < ActiveRecord::Base
   has_one :analysis_conclusion, dependent: :destroy
 
   validates :taster, presence: true
-  validates :body, presence: true
 end
