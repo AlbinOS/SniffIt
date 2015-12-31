@@ -28,7 +28,7 @@
     - @wine.tastings.each do |tasting|
       - if not tasting.id.blank? and tasting.errors.empty? 
         %tr
-          %td= tasting.user.name
+          %td= tasting.user.full_name
           %td
             - if tasting.analysis_conclusion
               = t("analysis_conclusion.balances.#{tasting.analysis_conclusion.balance}")

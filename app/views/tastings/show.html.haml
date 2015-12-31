@@ -1,7 +1,9 @@
-%h1= "Tasting of #{@tasting.wine.appellation}"
-%h2= @tasting.user.name
-= link_to 'Edit Tasting', edit_wine_tasting_path(@tasting.wine, @tasting), class: 'btn btn-warning btn-sm', role: 'button'
-= link_to 'Destroy Tasting', [@tasting.wine, @tasting], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', role: 'button'
+%h1= "Tasting of #{@tasting.wine.full_name}"
+%h2= @tasting.user.full_name
+%p
+  = link_to 'Back', @tasting.wine, class: 'btn btn-primary btn-sm', role: 'button'
+  = link_to 'Edit Tasting', edit_wine_tasting_path(@tasting.wine, @tasting), class: 'btn btn-warning btn-sm', role: 'button'
+  = link_to 'Destroy Tasting', [@tasting.wine, @tasting], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', role: 'button'
 
 %table.table.table-striped.table-hover.table-sm
   %thead.thead-inverse

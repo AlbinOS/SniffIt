@@ -10,6 +10,12 @@ class TastingsController < ApplicationController
     @tasting = Tasting.new
   end
 
+  def edit
+    @tasting = Tasting.find(params[:id])
+    @wine = @tasting.wine
+  end
+
+
   def create
     @wine = Wine.find(params[:wine_id])
 
@@ -22,6 +28,23 @@ class TastingsController < ApplicationController
 
     if @tasting.save
       redirect_to wine_path(@wine)
+    else
+      flash.now[:alert] = "Your data were not accepted, check your form below !"
+      render "wines/show"
+    end
+  end
+
+  def update
+    @tasting = Tasting.find(params[:id])
+
+    params[:tasting] = {user_id: current_user.id}
+    @tasting.visual_analysis.update(visual_analysis_params)
+    @tasting.olfactory_analysis.update(olfactory_analysis_params)
+    @tasting.gustatory_analysis.update(gustatory_analysis_params)
+    @tasting.analysis_conclusion.update(analysis_conclusion_params)
+
+    if @tasting.update(tasting_params)
+      redirect_to wine_path(@tasting.wine)
     else
       flash.now[:alert] = "Your data were not accepted, check your form below !"
       render "wines/show"
