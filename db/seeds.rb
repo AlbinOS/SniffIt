@@ -12,5 +12,7 @@ when "development"
   user.email = 'gilles.albin@gmail.com'
   user.password = 'wootwoot'
   user.password_confirmation = 'wootwoot'
+  user.first_name = 'Albin'
+  user.last_name = 'Gilles'
   user.save
 end

@@ -1,5 +1,5 @@
 class AnalysisConclusion < ActiveRecord::Base
-  belongs_to :tasting
+  belongs_to :tasting, inverse_of: :analysis_conclusion
 
   enum balance: [:balanced, :acid, :tannin, :mellow]
   enum pai: [:very_short, :short, :normal, :long, :very_long]

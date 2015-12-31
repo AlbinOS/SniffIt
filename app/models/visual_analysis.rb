@@ -1,5 +1,5 @@
 class VisualAnalysis < ActiveRecord::Base
-  belongs_to :tasting
+  belongs_to :tasting, inverse_of: :visual_analysis
 
   enum color: [:white, :rose, :red]
   enum intensity: [:colorless, :very_pale, :pale, :clear, :relatively_clear, :deep, :dark, :very_dark]
@@ -8,4 +8,5 @@ class VisualAnalysis < ActiveRecord::Base
   enum brightness: [:dull, :bright, :crystalline]
   enum density: [:fluid, :dense, :thick, :treacly]
   enum effervescence: [:still, :beading, :sparkling]
+
 end

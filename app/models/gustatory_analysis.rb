@@ -1,5 +1,5 @@
 class GustatoryAnalysis < ActiveRecord::Base
-  belongs_to :tasting
+  belongs_to :tasting, inverse_of: :gustatory_analysis
 
   enum acidity: [:still, :fresh, :bright, :nervous, :green, :very_green]
   enum alcohol: [:diluted, :light, :relatively_generous, :generous, :relatively_hot, :hot, :burning]
