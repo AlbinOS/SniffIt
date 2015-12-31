@@ -1,0 +1,49 @@
+fr:
+  visual_analysis:
+    colors:
+      red: Rouge
+      white : Blanc
+      rose: Rosé
+    intensities:
+      colorless: Incolore
+      very_pale: Très pale
+      pale: Pale
+      clear: Clair
+      relatively_clear: Assez clair
+      deep: Soutenu
+      dark: Sombre
+      very_dark: Très sombre
+    nuances:
+      grayed: Grisé
+      green: Vert
+      golden: Doré
+      straw: Paille
+      onionskin: Pelure d'oignon
+      salmon: Saumoné
+      orange: Orangé
+      copper: Cuivré
+      amber: Ambré
+      purplish: Violacé
+      ruby: Rubis
+      garnet: Grenat
+      tile: Tuilé
+      brown: Brun
+      maroon: Marron
+    limpidities:
+      troubled: Troublé
+      veiled: Voilé
+      limpid: Limpide
+    brightnesses:
+      dull: Terne
+      bright: Brillant
+      crystalline: Cristallin
+    densities:
+      fluid: Fluide
+      dense: Dense
+      thick: Épais
+      treacly: Sirupteux
+    effervescences:
+      still: Tranquille
+      beading: Perlant
+      sparkling: Pétillant
+

@@ -1,0 +1,37 @@
+fr:
+  gustatory_analysis:
+    acidities: 
+      still: Plat
+      fresh: Frais
+      bright: Vif
+      nervous: Nerveux
+      green: Vert
+      very_green: Très vert
+    alcohols: 
+      diluted: Dilué
+      light: Léger
+      relatively_generous: Assez généreux
+      generous: Généreux
+      relatively_hot: Assez chaud
+      hot: Chaud
+      burning: Brûlant
+    mellownesses:
+      biting: Mordant
+      steady: Ferme
+      melted: Fondu
+      round: Rond
+      fat: Gras
+      smooth: Onctueux
+    tannin_quantities:
+      informed: Informe
+      flowing: Coulant
+      soft: Souple
+      tannic: Tannique
+      astringent: Astringent
+      harsh: Apre
+    tannin_qualities: 
+      rude: Grossier
+      rough: Rugueux
+      herbaceous: Herbacé
+      silky: Soyeux
+      fine: Fin
