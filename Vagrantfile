@@ -104,7 +104,6 @@ Vagrant.configure(2) do |config|
 
     sudo rm /etc/nginx/conf.d/*.conf
     sudo ln -s /vagrant/config/nginx/development.conf /etc/nginx/conf.d/wine-pex.conf
-    sudo service nginx restart
   SHELL
 
   # Install rvm and latest ruby 2.2
@@ -126,6 +125,13 @@ Vagrant.configure(2) do |config|
     RAILS_ENV=development rake db:migrate
     RAILS_ENV=development rake db:seed
     RAILS_ENV=development rake assets:precompile
+  SHELL
+
+  # Startup puma and nginx servers
+  config.vm.provision "shell", privileged: false, run: "always", inline: <<-SHELL
+    sudo service nginx stop
+    cd /vagrant && puma -b unix:///tmp/wine-pex-puma.sock -d
+    sudo service nginx start
   SHELL
 
 end
