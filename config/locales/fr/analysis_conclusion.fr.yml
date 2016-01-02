@@ -1,0 +1,27 @@
+fr:
+  analysis_conclusion:
+    balances:
+      balanced: Équilibré
+      acid: Acide
+      tannin: Tannin
+      mellow: Moelleux
+    pais:
+      very_short: Très court
+      short: Court
+      normal: Normal
+      long: Long
+      very_long: Très long
+    overall_sentiments:
+      insufficient: Insuffisant
+      poor: Pauvre
+      homogeneous: Homogène
+      pleasant: Plaisant
+      well_formed: Bien constitué
+      full: Complet
+    futures:
+      very_young: Très jeune
+      young: Jeune
+      mature: Mûr
+      blooming: Épanoui
+      evolved: Évolué
+      worn: Usé

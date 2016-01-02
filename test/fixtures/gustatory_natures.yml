@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nature: 
+  gustatory_analysis_id: 
+
+two:
+  nature: 
+  gustatory_analysis_id: 

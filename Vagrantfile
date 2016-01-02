@@ -102,9 +102,8 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get install -y nginx
 
-    sudo rm /etc/nginx/conf.d/*.conf 
+    sudo rm /etc/nginx/conf.d/*.conf
     sudo ln -s /vagrant/config/nginx/development.conf /etc/nginx/conf.d/wine-pex.conf
-    sudo service nginx restart
   SHELL
 
   # Install rvm and latest ruby 2.2
@@ -126,6 +125,20 @@ Vagrant.configure(2) do |config|
     RAILS_ENV=development rake db:migrate
     RAILS_ENV=development rake db:seed
     RAILS_ENV=development rake assets:precompile
+  SHELL
+
+  # Add some aliases to .bashrc
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    echo 'alias puma_start="export CURRENT_DIR=$(pwd) && cd /vagrant && puma -b unix:///tmp/wine-pex-puma.sock -d --pidfile /tmp/wine-pex-puma.pid && cd $CURRENT_DIR && unset CURRENT_DIR"' >> $HOME/.bashrc
+    echo 'alias puma_stop="pumactl -P /tmp/wine-pex-puma.pid stop"' >> $HOME/.bashrc
+    echo 'alias puma_restart="pumactl -P /tmp/wine-pex-puma.pid restart"' >> $HOME/.bashrc
+  SHELL
+
+  # Startup puma and nginx servers
+  config.vm.provision "shell", privileged: false, run: "always", inline: <<-SHELL
+    sudo service nginx stop
+    cd /vagrant && puma -b unix:///tmp/wine-pex-puma.sock -d --pidfile /tmp/wine-pex-puma.pid
+    sudo service nginx start
   SHELL
 
 end

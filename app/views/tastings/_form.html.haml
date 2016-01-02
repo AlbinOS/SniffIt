@@ -1,4 +1,30 @@
-= form_for([@wine, @tasting]) do |f|
-  = f.full_text_field :taster, placeholder: 'Your name', class: 'form-control', required: true
-  = f.full_text_field :body, placeholder: 'This is très fruité !', class: 'form-control', required: true
-  = f.submit 'Create tasting', class: "btn btn-primary"
+%h2 Visual Analysis
+%hr.m-y-2
+= full_select_tag :visual_analysis, :color, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :colors))
+= full_select_tag :visual_analysis, :intensity, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :intensities))
+= full_select_tag :visual_analysis, :nuance, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :nuances))
+= full_select_tag :visual_analysis, :limpidity, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :limpidities))
+= full_select_tag :visual_analysis, :brightness, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :brightnesses))
+= full_select_tag :visual_analysis, :density, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :densities))
+= full_select_tag :visual_analysis, :effervescence, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :effervescences))
+
+%h2 Olfactory Analysis
+%hr.m-y-2
+= full_select_tag :olfactory_analysis, :intensity, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :intensities))
+= full_select_tag :olfactory_analysis, :diversity, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :diversities))
+= full_select_tag :olfactory_analysis, :quality, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :qualities))
+
+%h2 Gustatory Analysis
+%hr.m-y-2
+= full_select_tag :gustatory_analysis, :acidity, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :acidities))
+= full_select_tag :gustatory_analysis, :alcohol, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :alcohols))
+= full_select_tag :gustatory_analysis, :mellowness, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :mellownesses))
+= full_select_tag :gustatory_analysis, :tannin_quantity, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :tannin_quantities))
+= full_select_tag :gustatory_analysis, :tannin_quality, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :tannin_qualities))
+
+%h2 Analysis Conclusion
+%hr.m-y-2
+= full_select_tag :analysis_conclusion, :balance, options_for_select(active_record_enum_list_i18n(AnalysisConclusion, :balances))
+= full_select_tag :analysis_conclusion, :pai, options_for_select(active_record_enum_list_i18n(AnalysisConclusion, :pais))
+= full_select_tag :analysis_conclusion, :overall_sentiment, options_for_select(active_record_enum_list_i18n(AnalysisConclusion, :overall_sentiments))
+= full_select_tag :analysis_conclusion, :future, options_for_select(active_record_enum_list_i18n(AnalysisConclusion, :futures))

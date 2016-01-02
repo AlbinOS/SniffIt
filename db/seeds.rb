@@ -12,5 +12,15 @@ when "development"
   user.email = 'gilles.albin@gmail.com'
   user.password = 'wootwoot'
   user.password_confirmation = 'wootwoot'
+  user.first_name = 'Albin'
+  user.last_name = 'Gilles'
+  user.save
+
+  user = User.new
+  user.email = 'albingilles12@msn.com'
+  user.password = 'wootwoot'
+  user.password_confirmation = 'wootwoot'
+  user.first_name = 'Another'
+  user.last_name = 'Guy'
   user.save
 end

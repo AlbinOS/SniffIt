@@ -1,0 +1,8 @@
+%h1 Edit Tasting
+%h2= @tasting.user.full_name
+%h2= @tasting.wine.full_name
+
+= form_tag [@wine, @tasting], method: 'patch' do
+  = render 'form'
+  = link_to 'Back', [@wine, @tasting], class: 'btn btn-primary', role: 'button'
+  = submit_tag 'Edit tasting', class: "btn btn-primary"

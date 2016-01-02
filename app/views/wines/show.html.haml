@@ -12,14 +12,32 @@
   %strong Domaine
   = @wine.domaine
 
-%h2 Add a tasting
-= render 'tastings/form'
+%p
+  = link_to 'Back', wines_path, class: "btn btn-primary", role: "button"
+  = link_to 'Edit Wine', edit_wine_path(@wine), class: "btn btn-warning", role: "button"
+  = link_to 'Add Tasting', new_wine_tasting_path(@wine), class: "btn btn-primary", role: "button"
 
 %h2 Tastings
-- @wine.tastings.each do |tasting|
-  - if not tasting.id.blank? and tasting.errors.empty? 
-    = render tasting
+%table.table.table-striped.table-hover.table-sm
+  %thead.thead-inverse
+    %tr
+      %th Taster
+      %th Analysis conclusion
+      %th
+  %tbody
+    - @wine.tastings.each do |tasting|
+      - if not tasting.id.blank? and tasting.errors.empty? 
+        %tr
+          %td= tasting.user.full_name
+          %td
+            - if tasting.analysis_conclusion
+              = t("analysis_conclusion.balances.#{tasting.analysis_conclusion.balance}")
+            - else
+              = 'None'
+          %td
+            = link_to 'Show Tasting', [tasting.wine, tasting], class: 'btn btn-primary btn-sm', role: 'button'
+            - if policy(tasting).edit?
+              = link_to 'Edit Tasting', edit_wine_tasting_path(tasting.wine, tasting), class: 'btn btn-warning btn-sm', role: 'button'
+            - if policy(tasting).destroy?
+              = link_to 'Destroy Tasting', [tasting.wine, tasting], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', role: 'button'
 
-
-= link_to 'Back', wines_path, class: "btn btn-primary", role: "button"
-= link_to 'Edit', edit_wine_path(@wine), class: "btn btn-warning", role: "button"

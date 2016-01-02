@@ -1,6 +1,6 @@
 = form_for @wine do |f|
-  = f.full_text_field :appellation, placeholder: 'Côte du Rhône, Médoc, ...', class: 'form-control', required: true
-  = f.full_number_field :vintage, class: 'form-control'
-  = f.full_text_field :domaine, placeholder: 'Domaine des pères de l\'église, Château Pape Clément, ...', class: 'form-control', required: true
+  = f.full_text_field :appellation, placeholder: 'Côte du Rhône, Médoc, ...', required: true
+  = f.full_number_field :vintage
+  = f.full_text_field :domaine, placeholder: 'Domaine des pères de l\'église, Château Pape Clément, ...', required: true
   = link_to 'Back', wines_path, class: 'btn btn-primary', role: 'button'
   = f.submit 'Create Wine', class: 'btn btn-primary'

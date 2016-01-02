@@ -1,0 +1,20 @@
+fr:
+  olfactory_analysis:
+    intensities: 
+      very_weak: Très faible
+      low: Faible
+      pretty_weak: Assez faible
+      normal: Moyenne
+      relatively_aromatic: Assez aromatique
+      aromatic: Aromatique
+      powerful: Puissant
+    diversities: 
+      aromatic_simple: Aromatique simple
+      rich: Riche
+      complex: Complexe
+    qualities: 
+      gross: Grossier
+      vulgar: Vulgaire
+      ordinary: Ordinaire
+      fine: Fin
+      distinguished: Distingué
