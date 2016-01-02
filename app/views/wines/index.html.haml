@@ -1,15 +1,13 @@
-%h1 Listing all wines
+%h1= t('wine.index')
 
-%h2= link_to 'Add wine', new_wine_path, class: 'btn btn-primary', role: 'button'
+%h2= link_to "#{t('actions.add')} #{t('activerecord.models.wine')}", new_wine_path, class: 'btn btn-primary', role: 'button'
 
 %table.table.table-striped.table-hover.table-sm
   %thead.thead-inverse
     %tr
-      %th Appellation
-      %th Domaine
-      %th Vintage
-      %th
-      %th
+      %th= t('wine.appellation')
+      %th= t('domaine')
+      %th= t('vintage')
       %th
   %tbody
     - @wines.each do |wine|
@@ -17,6 +15,9 @@
         %td= wine.appellation
         %td= wine.domaine
         %td= wine.vintage
-        %td= link_to 'Show', wine_path(wine), class: 'btn btn-primary', role: 'button'
-        %td= link_to 'Edit', edit_wine_path(wine), class: 'btn btn-warning', role: 'button'
-        %td= link_to 'Destroy', wine_path(wine), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger', role: 'button'
+        %td
+          = link_to t('actions.show.details'), wine_path(wine), class: 'btn btn-info', role: 'button'
+          - if policy(wine).edit?
+            = link_to t('actions.edit'), edit_wine_path(wine), class: 'btn btn-warning', role: 'button'
+          - if policy(wine).destroy?
+            = link_to t('actions.destroy'), wine_path(wine), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger', role: 'button'

@@ -1,0 +1,11 @@
+fr:
+  navigation:
+    back: Retour
+    home: Accueil
+    next: Suivant
+    back_to:
+      home: Retour à l'accueil
+      tasting_show: Retour à l'affichage de la dégustation
+      wine_show: Retour à l'affichage du vin
+      wine_index: Retour à la liste des vins
+    log_in: Se connecter

@@ -1,0 +1,14 @@
+fr:
+  activerecord:
+    models:
+      aftertaste_gustatory_persistence: Arrière goût
+      analysis_conclusion: Conclusion
+      dominant_gustatory_persistence: Persistance gustative dominante
+      gustatory_analysis: Analyse gustative
+      gustatory_nature: Autres caractères gustatif
+      olfactory_analysis: Analyse olfactive
+      olfactory_nature: Caractère olfactif
+      tasting: Dégustation
+      user: Utilisateur
+      visual_analysis: Analyse visuelle
+      wine: Vin

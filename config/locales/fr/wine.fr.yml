@@ -1,0 +1,7 @@
+fr:
+  wine:
+    appellation: Appellation
+    vintage: Millésime
+    no_vintage: Non millésimé
+    domaine: Domaine
+    index: Liste des vins

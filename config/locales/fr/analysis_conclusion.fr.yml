@@ -1,16 +1,19 @@
 fr:
   analysis_conclusion:
+    balance: Équilibre
     balances:
       balanced: Équilibré
       acid: Acide
       tannin: Tannin
       mellow: Moelleux
+    pai: Persistance aromatique intense
     pais:
       very_short: Très court
       short: Court
       normal: Normal
       long: Long
       very_long: Très long
+    overall_sentiment: Jugement d'ensemble
     overall_sentiments:
       insufficient: Insuffisant
       poor: Pauvre
@@ -18,6 +21,7 @@ fr:
       pleasant: Plaisant
       well_formed: Bien constitué
       full: Complet
+    future: Avenir
     futures:
       very_young: Très jeune
       young: Jeune

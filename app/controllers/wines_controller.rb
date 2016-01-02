@@ -18,6 +18,7 @@ class WinesController < ApplicationController
   end
 
   def create
+    @wine.user = current_user
     if @wine.save
       redirect_to @wine
     else

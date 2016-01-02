@@ -1,4 +1,6 @@
 class Wine < ActiveRecord::Base
+  belongs_to :user, inverse_of: :wines
+
   has_many :tastings, dependent: :destroy, inverse_of: :wine
 
   validates :appellation, presence: true

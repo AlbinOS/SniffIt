@@ -1,9 +1,11 @@
 fr:
   visual_analysis:
+    color: Couleur
     colors:
       red: Rouge
       white : Blanc
       rose: Rosé
+    intensity: Intensité de la couleur
     intensities:
       colorless: Incolore
       very_pale: Très pale
@@ -13,6 +15,7 @@ fr:
       deep: Soutenu
       dark: Sombre
       very_dark: Très sombre
+    nuance: Qualification de la nuance
     nuances:
       grayed: Grisé
       green: Vert
@@ -29,19 +32,23 @@ fr:
       tile: Tuilé
       brown: Brun
       maroon: Marron
+    limpidity: Limpidité (observation de matières en suspension et/ou dépôts)
     limpidities:
       troubled: Troublé
       veiled: Voilé
       limpid: Limpide
+    brightness: Brillance
     brightnesses:
       dull: Terne
       bright: Brillant
       crystalline: Cristallin
+    density: Densité apparente
     densities:
       fluid: Fluide
       dense: Dense
       thick: Épais
       treacly: Sirupteux
+    effervescence: Effervescence
     effervescences:
       still: Tranquille
       beading: Perlant

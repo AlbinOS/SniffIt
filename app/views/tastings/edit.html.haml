@@ -1,8 +1,8 @@
-%h1 Edit Tasting
+%h1= "#{t('actions.edit')} #{t('activerecord.models.tasting')}"
 %h2= @tasting.user.full_name
 %h2= @tasting.wine.full_name
 
 = form_tag [@wine, @tasting], method: 'patch' do
   = render 'form'
-  = link_to 'Back', [@wine, @tasting], class: 'btn btn-primary', role: 'button'
-  = submit_tag 'Edit tasting', class: "btn btn-primary"
+  = link_to t('navigation.back_to.tasting_show'), [@wine, @tasting], class: 'btn btn-info', role: 'button'
+  = submit_tag t('actions.edit'), class: "btn btn-primary"

@@ -1,7 +1,7 @@
-%h1.display-3 Welcome to wine-pex
+%h1.display-3= "#{t('welcome.message')} !"
 
 - if user_signed_in?
-  %h2= link_to 'List all wines', controller: 'wines'
-  %h2= link_to 'Add wine', new_wine_path
+  %h2= link_to t('wine.index'), controller: 'wines'
+  %h2= link_to "#{t('actions.add')} #{t('activerecord.models.wine')}", new_wine_path
 - else
-  %h2= link_to 'Log in', new_user_session_path
+  %h2= link_to t('navigation.log_in'), new_user_session_path

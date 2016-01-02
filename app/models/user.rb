@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :wines, inverse_of: :user
   has_many :tastings, inverse_of: :user
 
   validates :first_name, :last_name, presence: true

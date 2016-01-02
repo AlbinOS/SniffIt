@@ -9,10 +9,10 @@ class WinePolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    same_user_id?
   end
 
   def destroy?
-    true
+    same_user_id?
   end
 end

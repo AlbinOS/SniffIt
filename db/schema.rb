@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151231073408) do
+ActiveRecord::Schema.define(version: 20160102151922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "aftertaste_persistences", force: :cascade do |t|
+    t.integer  "nature"
+    t.integer  "analysis_conclusion_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "aftertaste_persistences", ["analysis_conclusion_id"], name: "index_aftertaste_persistences_on_analysis_conclusion_id", using: :btree
 
   create_table "analysis_conclusions", force: :cascade do |t|
     t.integer  "balance"
@@ -130,8 +139,12 @@ ActiveRecord::Schema.define(version: 20151231073408) do
     t.string   "domaine"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
+  add_index "wines", ["user_id"], name: "index_wines_on_user_id", using: :btree
+
+  add_foreign_key "aftertaste_persistences", "analysis_conclusions"
   add_foreign_key "analysis_conclusions", "tastings"
   add_foreign_key "dominant_gustatory_persistences", "analysis_conclusions"
   add_foreign_key "gustatory_analyses", "tastings"
@@ -141,4 +154,5 @@ ActiveRecord::Schema.define(version: 20151231073408) do
   add_foreign_key "tastings", "users"
   add_foreign_key "tastings", "wines"
   add_foreign_key "visual_analyses", "tastings"
+  add_foreign_key "wines", "users"
 end

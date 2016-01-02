@@ -1,28 +1,38 @@
-%h1 Show wine
+%h1= "#{t('actions.show')} #{t('activerecord.models.wine')}"
 
 %p
-  %strong Appellation
+  %strong Ajouté par
+  = @wine.user.full_name
+
+%p
+  %strong= t('wine.appellation')
   = @wine.appellation
 
 %p
-  %strong Vintage
-  = @wine.vintage
+  %strong= t('wine.vintage')
+  - if @wine.vintage
+    = @wine.vintage
+  - else
+    = t('wine.no_vintage')
 
 %p
-  %strong Domaine
+  %strong= t('wine.domaine') 
   = @wine.domaine
 
 %p
-  = link_to 'Back', wines_path, class: "btn btn-primary", role: "button"
-  = link_to 'Edit Wine', edit_wine_path(@wine), class: "btn btn-warning", role: "button"
-  = link_to 'Add Tasting', new_wine_tasting_path(@wine), class: "btn btn-primary", role: "button"
+  = link_to t('navigation.back_to.wine_index'), wines_path, class: "btn btn-info", role: "button"
+  - if policy(@wine).edit?
+    = link_to "#{t('actions.edit')}", edit_wine_path(@wine), class: "btn btn-warning", role: "button"
+  - if policy(@wine).destroy?
+    = link_to "#{t('actions.destroy')}", wine_path(@wine), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger', role: 'button'
+  = link_to "#{t('actions.add')} #{t('activerecord.models.tasting')}", new_wine_tasting_path(@wine), class: "btn btn-primary", role: "button"
 
-%h2 Tastings
+%h2= t('activerecord.models.tasting').pluralize
 %table.table.table-striped.table-hover.table-sm
   %thead.thead-inverse
     %tr
-      %th Taster
-      %th Analysis conclusion
+      %th= t('tasting.taster')
+      %th= t('activerecord.models.analysis_conclusion')
       %th
   %tbody
     - @wine.tastings.each do |tasting|
@@ -35,7 +45,7 @@
             - else
               = 'None'
           %td
-            = link_to 'Show Tasting', [tasting.wine, tasting], class: 'btn btn-primary btn-sm', role: 'button'
+            = link_to 'Show Tasting', [tasting.wine, tasting], class: 'btn btn-info btn-sm', role: 'button'
             - if policy(tasting).edit?
               = link_to 'Edit Tasting', edit_wine_tasting_path(tasting.wine, tasting), class: 'btn btn-warning btn-sm', role: 'button'
             - if policy(tasting).destroy?

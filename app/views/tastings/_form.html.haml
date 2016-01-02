@@ -1,4 +1,4 @@
-%h2 Visual Analysis
+%h2= t('activerecord.models.visual_analysis')
 %hr.m-y-2
 = full_select_tag :visual_analysis, :color, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :colors))
 = full_select_tag :visual_analysis, :intensity, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :intensities))
@@ -8,13 +8,13 @@
 = full_select_tag :visual_analysis, :density, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :densities))
 = full_select_tag :visual_analysis, :effervescence, options_for_select(active_record_enum_list_i18n(VisualAnalysis, :effervescences))
 
-%h2 Olfactory Analysis
+%h2= t('activerecord.models.olfactory_analysis')
 %hr.m-y-2
 = full_select_tag :olfactory_analysis, :intensity, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :intensities))
 = full_select_tag :olfactory_analysis, :diversity, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :diversities))
 = full_select_tag :olfactory_analysis, :quality, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :qualities))
 
-%h2 Gustatory Analysis
+%h2= t('activerecord.models.gustatory_analysis')
 %hr.m-y-2
 = full_select_tag :gustatory_analysis, :acidity, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :acidities))
 = full_select_tag :gustatory_analysis, :alcohol, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :alcohols))
@@ -22,7 +22,7 @@
 = full_select_tag :gustatory_analysis, :tannin_quantity, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :tannin_quantities))
 = full_select_tag :gustatory_analysis, :tannin_quality, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :tannin_qualities))
 
-%h2 Analysis Conclusion
+%h2= t('activerecord.models.analysis_conclusion')
 %hr.m-y-2
 = full_select_tag :analysis_conclusion, :balance, options_for_select(active_record_enum_list_i18n(AnalysisConclusion, :balances))
 = full_select_tag :analysis_conclusion, :pai, options_for_select(active_record_enum_list_i18n(AnalysisConclusion, :pais))

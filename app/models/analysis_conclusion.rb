@@ -7,5 +7,5 @@ class AnalysisConclusion < ActiveRecord::Base
   enum future: [:very_young, :young, :mature, :blooming, :evolved, :worn]
 
   has_many :dominant_gustatory_persistences
-  has_many :aftertaste_gustatory_persistences, class_name: 'DominantGustatoryPersistence'
+  has_many :aftertaste_persistences
 end

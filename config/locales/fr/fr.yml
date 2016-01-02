@@ -1,6 +1,5 @@
 ---
 fr:
-  hello: "Bonjour le monde !"
   date:
     abbr_day_names:
     - dim

@@ -1,5 +1,6 @@
 fr:
   olfactory_analysis:
+    intensity: Intensité olfactive
     intensities: 
       very_weak: Très faible
       low: Faible
@@ -8,10 +9,12 @@ fr:
       relatively_aromatic: Assez aromatique
       aromatic: Aromatique
       powerful: Puissant
+    diversity: Diversité olfactive
     diversities: 
       aromatic_simple: Aromatique simple
       rich: Riche
       complex: Complexe
+    quality: Qualité olfactive
     qualities: 
       gross: Grossier
       vulgar: Vulgaire

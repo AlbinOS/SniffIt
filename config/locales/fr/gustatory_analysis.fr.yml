@@ -1,5 +1,6 @@
 fr:
   gustatory_analysis:
+    acidity: Acidité
     acidities: 
       still: Plat
       fresh: Frais
@@ -7,6 +8,7 @@ fr:
       nervous: Nerveux
       green: Vert
       very_green: Très vert
+    alcohol: Alcool
     alcohols: 
       diluted: Dilué
       light: Léger
@@ -15,6 +17,7 @@ fr:
       relatively_hot: Assez chaud
       hot: Chaud
       burning: Brûlant
+    mellowness: Moelleux
     mellownesses:
       biting: Mordant
       steady: Ferme
@@ -22,6 +25,7 @@ fr:
       round: Rond
       fat: Gras
       smooth: Onctueux
+    tannin_quantity: Quantité des tannins
     tannin_quantities:
       informed: Informe
       flowing: Coulant
@@ -29,6 +33,7 @@ fr:
       tannic: Tannique
       astringent: Astringent
       harsh: Apre
+    tannin_quality: Qualité des tannins
     tannin_qualities: 
       rude: Grossier
       rough: Rugueux

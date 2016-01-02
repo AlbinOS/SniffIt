@@ -1,6 +1,6 @@
 class TastingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_and_authorize_resource, except: :create
+  before_action :load_and_authorize_resource
   after_action :verify_authorized
 
   def show
@@ -17,21 +17,19 @@ class TastingsController < ApplicationController
   def create
     @wine = Wine.find(params[:wine_id])
 
-    params[:tasting] = {user_id: current_user.id}
     @tasting = @wine.tastings.build(tasting_params)
+    @tasting.user = current_user
     @tasting.build_visual_analysis(visual_analysis_params)
     @tasting.build_olfactory_analysis(olfactory_analysis_params)
     @tasting.build_gustatory_analysis(gustatory_analysis_params)
     @tasting.build_analysis_conclusion(analysis_conclusion_params)
 
     if @tasting.save
-      redirect_to wine_path(@wine)
+      redirect_to [@wine, @tasting]
     else
       flash.now[:alert] = "Your data were not accepted, check your form below !"
       render "wines/show"
     end
-
-    skip_authorization
   end
 
   def update
@@ -40,7 +38,7 @@ class TastingsController < ApplicationController
     @tasting.gustatory_analysis.assign_attributes(gustatory_analysis_params)
     @tasting.analysis_conclusion.assign_attributes(analysis_conclusion_params)
 
-    if @tasting.save
+    if @tasting.update(tasting_params)
       redirect_to wine_path(@tasting.wine)
     else
       flash.now[:alert] = "Your data were not accepted, check your form below !"
@@ -57,7 +55,6 @@ class TastingsController < ApplicationController
   private
 
   def tasting_params
-    params.require(:tasting).permit(:user_id)
   end
 
   def visual_analysis_params
