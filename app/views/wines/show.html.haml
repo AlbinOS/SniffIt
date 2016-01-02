@@ -36,6 +36,8 @@
               = 'None'
           %td
             = link_to 'Show Tasting', [tasting.wine, tasting], class: 'btn btn-primary btn-sm', role: 'button'
-            = link_to 'Edit Tasting', edit_wine_tasting_path(tasting.wine, tasting), class: 'btn btn-warning btn-sm', role: 'button'
-            = link_to 'Destroy Tasting', [tasting.wine, tasting], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', role: 'button'
+            - if policy(tasting).edit?
+              = link_to 'Edit Tasting', edit_wine_tasting_path(tasting.wine, tasting), class: 'btn btn-warning btn-sm', role: 'button'
+            - if policy(tasting).destroy?
+              = link_to 'Destroy Tasting', [tasting.wine, tasting], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm', role: 'button'
 

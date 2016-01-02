@@ -1,20 +1,18 @@
 class TastingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :load_and_authorize_resource, except: :create
+  after_action :verify_authorized
 
   def show
-    @tasting = Tasting.find(params[:id])
   end
-  
+
   def new
     @wine = Wine.find(params[:wine_id])
-    @tasting = Tasting.new
   end
 
   def edit
-    @tasting = Tasting.find(params[:id])
     @wine = @tasting.wine
   end
-
 
   def create
     @wine = Wine.find(params[:wine_id])
@@ -32,18 +30,17 @@ class TastingsController < ApplicationController
       flash.now[:alert] = "Your data were not accepted, check your form below !"
       render "wines/show"
     end
+
+    skip_authorization
   end
 
   def update
-    @tasting = Tasting.find(params[:id])
+    @tasting.visual_analysis.assign_attributes(visual_analysis_params)
+    @tasting.olfactory_analysis.assign_attributes(olfactory_analysis_params)
+    @tasting.gustatory_analysis.assign_attributes(gustatory_analysis_params)
+    @tasting.analysis_conclusion.assign_attributes(analysis_conclusion_params)
 
-    params[:tasting] = {user_id: current_user.id}
-    @tasting.visual_analysis.update(visual_analysis_params)
-    @tasting.olfactory_analysis.update(olfactory_analysis_params)
-    @tasting.gustatory_analysis.update(gustatory_analysis_params)
-    @tasting.analysis_conclusion.update(analysis_conclusion_params)
-
-    if @tasting.update(tasting_params)
+    if @tasting.save
       redirect_to wine_path(@tasting.wine)
     else
       flash.now[:alert] = "Your data were not accepted, check your form below !"
@@ -52,8 +49,7 @@ class TastingsController < ApplicationController
   end
 
   def destroy
-    @wine = Wine.find(params[:wine_id])
-    @tasting = @wine.tastings.find(params[:id])
+    @wine = @tasting.wine
     @tasting.destroy
     redirect_to wine_path(@wine)
   end

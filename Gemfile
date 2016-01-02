@@ -31,6 +31,8 @@ end
 
 # Use Devise gem for authentification
 gem 'devise'
+# Use Pundit as authorization system
+gem 'pundit'
 
 # Use puma as application server
 gem 'puma'
