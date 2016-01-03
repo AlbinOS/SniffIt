@@ -33,6 +33,8 @@ end
 gem 'devise'
 # Use Pundit as authorization system
 gem 'pundit'
+# Use rolify as user-role manager
+gem 'rolify'
 
 # Use puma as application server
 gem 'puma'

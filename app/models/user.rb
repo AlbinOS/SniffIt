@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Role-based user
+  rolify
+
   has_many :wines, inverse_of: :user
   has_many :tastings, inverse_of: :user
 

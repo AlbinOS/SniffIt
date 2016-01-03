@@ -15,6 +15,7 @@ when "development"
   user.first_name = 'Albin'
   user.last_name = 'Gilles'
   user.save
+  user.add_role :admin
 
   user = User.new
   user.email = 'albingilles12@msn.com'

@@ -9,10 +9,10 @@ class TastingPolicy < ApplicationPolicy
   end
 
   def update?
-    same_user_id?
+    same_user_id? or user.has_role? :admin
   end
 
   def destroy?
-    same_user_id?
+    same_user_id? or user.has_role? :admin
   end
 end
