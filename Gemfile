@@ -43,6 +43,10 @@ gem 'puma'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # Use factory girl for data generation 
+  gem "factory_girl_rails"
+  # Use faker as sample data generator
+  gem 'faker'
 end
 
 # Develoment gems
