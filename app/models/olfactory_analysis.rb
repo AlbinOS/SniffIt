@@ -5,6 +5,8 @@ class OlfactoryAnalysis < ActiveRecord::Base
   enum diversity: [:aromatic_simple, :rich, :complex]
   enum quality: [:gross, :vulgar, :ordinary, :fine, :distinguished]
 
-  has_many :olfactory_natures
-  has_many :retro_olfactory_natures, class_name: 'OlfactoryNature'
+  has_many :olfactory_natures, dependent: :destroy, inverse_of: :olfactory_analysis, autosave: true
+  has_many :retro_olfactory_natures, dependent: :destroy, inverse_of: :olfactory_analysis, autosave: true
+
+  validates :tasting, presence: true
 end

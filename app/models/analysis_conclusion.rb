@@ -6,6 +6,8 @@ class AnalysisConclusion < ActiveRecord::Base
   enum overall_sentiment: [:insufficient, :poor, :homogeneous, :pleasant, :well_formed, :full]
   enum future: [:very_young, :young, :mature, :blooming, :evolved, :worn]
 
-  has_many :dominant_gustatory_persistences
-  has_many :aftertaste_persistences
+  has_many :dominant_gustatory_persistences, dependent: :destroy, inverse_of: :analysis_conclusion, autosave: true
+  has_many :aftertaste_persistences, dependent: :destroy, inverse_of: :analysis_conclusion, autosave: true
+
+  validates :tasting, presence: true
 end

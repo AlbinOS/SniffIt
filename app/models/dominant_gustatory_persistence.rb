@@ -1,5 +1,6 @@
 class DominantGustatoryPersistence < ActiveRecord::Base
-  belongs_to :analysis_conclusion
+  belongs_to :analysis_conclusion, inverse_of: :dominant_gustatory_persistences
 
-  enum nature: [:acid, :tannin, :alcohol, :drying, :herbaceous]
+  validates :analysis_conclusion, presence: true
+  validates :nature, presence: true
 end

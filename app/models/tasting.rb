@@ -6,4 +6,7 @@ class Tasting < ActiveRecord::Base
   has_one :olfactory_analysis, dependent: :destroy, inverse_of: :tasting, autosave: true
   has_one :gustatory_analysis, dependent: :destroy, inverse_of: :tasting, autosave: true
   has_one :analysis_conclusion, dependent: :destroy, inverse_of: :tasting, autosave: true
+
+  validates :wine, presence: true
+  validates :user, presence: true
 end

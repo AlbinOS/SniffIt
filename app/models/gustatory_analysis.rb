@@ -7,5 +7,7 @@ class GustatoryAnalysis < ActiveRecord::Base
   enum tannin_quantity: [:informed, :flowing, :soft, :tannic, :astringent, :harsh]
   enum tannin_quality: [:rude, :rough, :herbaceous, :silky, :fine]
 
-  has_many :gustatory_natures
+  has_many :gustatory_natures, dependent: :destroy, inverse_of: :gustatory_analysis, autosave: true
+
+  validates :tasting, presence: true
 end

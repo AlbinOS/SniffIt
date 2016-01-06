@@ -1,5 +1,6 @@
 class AftertastePersistence < ActiveRecord::Base
-  belongs_to :analysis_conclusion
+  belongs_to :analysis_conclusion, inverse_of: :aftertaste_persistences
 
-  enum nature: [:acid, :tannin, :alcohol, :drying, :herbaceous]
+  validates :analysis_conclusion, presence: true
+  validates :nature, presence: true
 end

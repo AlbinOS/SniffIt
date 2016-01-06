@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160103102834) do
+ActiveRecord::Schema.define(version: 20160106085846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "aftertaste_persistences", force: :cascade do |t|
-    t.integer  "nature"
-    t.integer  "analysis_conclusion_id"
+    t.string   "nature",                 null: false
+    t.integer  "analysis_conclusion_id", null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160103102834) do
     t.integer  "pai"
     t.integer  "overall_sentiment"
     t.integer  "future"
-    t.integer  "tasting_id"
+    t.integer  "tasting_id",        null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
@@ -38,13 +38,20 @@ ActiveRecord::Schema.define(version: 20160103102834) do
   add_index "analysis_conclusions", ["tasting_id"], name: "index_analysis_conclusions_on_tasting_id", using: :btree
 
   create_table "dominant_gustatory_persistences", force: :cascade do |t|
-    t.integer  "nature"
-    t.integer  "analysis_conclusion_id"
+    t.string   "nature",                 null: false
+    t.integer  "analysis_conclusion_id", null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
   add_index "dominant_gustatory_persistences", ["analysis_conclusion_id"], name: "index_dominant_gustatory_persistences_on_analysis_conclusion_id", using: :btree
+
+  create_table "grapes", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "gustatory_analyses", force: :cascade do |t|
     t.integer  "acidity"
@@ -60,8 +67,8 @@ ActiveRecord::Schema.define(version: 20160103102834) do
   add_index "gustatory_analyses", ["tasting_id"], name: "index_gustatory_analyses_on_tasting_id", using: :btree
 
   create_table "gustatory_natures", force: :cascade do |t|
-    t.integer  "nature"
-    t.integer  "gustatory_analysis_id"
+    t.string   "nature",                null: false
+    t.integer  "gustatory_analysis_id", null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
@@ -72,7 +79,7 @@ ActiveRecord::Schema.define(version: 20160103102834) do
     t.integer  "intensity"
     t.integer  "diversity"
     t.integer  "quality"
-    t.integer  "tasting_id"
+    t.integer  "tasting_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,13 +87,22 @@ ActiveRecord::Schema.define(version: 20160103102834) do
   add_index "olfactory_analyses", ["tasting_id"], name: "index_olfactory_analyses_on_tasting_id", using: :btree
 
   create_table "olfactory_natures", force: :cascade do |t|
-    t.integer  "nature"
-    t.integer  "olfactory_analysis_id"
+    t.string   "nature",                null: false
+    t.integer  "olfactory_analysis_id", null: false
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
 
   add_index "olfactory_natures", ["olfactory_analysis_id"], name: "index_olfactory_natures_on_olfactory_analysis_id", using: :btree
+
+  create_table "retro_olfactory_natures", force: :cascade do |t|
+    t.string   "nature"
+    t.integer  "olfactory_analysis_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "retro_olfactory_natures", ["olfactory_analysis_id"], name: "index_retro_olfactory_natures_on_olfactory_analysis_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -100,10 +116,10 @@ ActiveRecord::Schema.define(version: 20160103102834) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "tastings", force: :cascade do |t|
-    t.integer  "wine_id"
+    t.integer  "wine_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
   end
 
   add_index "tastings", ["user_id"], name: "index_tastings_on_user_id", using: :btree
@@ -122,8 +138,8 @@ ActiveRecord::Schema.define(version: 20160103102834) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",                          null: false
+    t.string   "last_name",                           null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -151,13 +167,25 @@ ActiveRecord::Schema.define(version: 20160103102834) do
 
   add_index "visual_analyses", ["tasting_id"], name: "index_visual_analyses_on_tasting_id", using: :btree
 
+  create_table "wine_natures", force: :cascade do |t|
+    t.integer  "wine_id",    null: false
+    t.integer  "grape_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "wine_natures", ["grape_id"], name: "index_wine_natures_on_grape_id", using: :btree
+  add_index "wine_natures", ["wine_id"], name: "index_wine_natures_on_wine_id", using: :btree
+
   create_table "wines", force: :cascade do |t|
-    t.string   "appellation"
+    t.string   "appellation",       null: false
     t.integer  "vintage"
-    t.string   "domaine"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "domaine",           null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "user_id"
+    t.integer  "alcohol_rate",      null: false
+    t.integer  "vinification_type"
   end
 
   add_index "wines", ["user_id"], name: "index_wines_on_user_id", using: :btree
@@ -169,8 +197,11 @@ ActiveRecord::Schema.define(version: 20160103102834) do
   add_foreign_key "gustatory_natures", "gustatory_analyses"
   add_foreign_key "olfactory_analyses", "tastings"
   add_foreign_key "olfactory_natures", "olfactory_analyses"
+  add_foreign_key "retro_olfactory_natures", "olfactory_analyses"
   add_foreign_key "tastings", "users"
   add_foreign_key "tastings", "wines"
   add_foreign_key "visual_analyses", "tastings"
+  add_foreign_key "wine_natures", "grapes"
+  add_foreign_key "wine_natures", "wines"
   add_foreign_key "wines", "users"
 end
