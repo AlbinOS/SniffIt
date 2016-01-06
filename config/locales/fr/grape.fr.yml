@@ -1,0 +1,6 @@
+fr:
+  grape:
+    color: Couleur
+    colors:
+      red: Rouge
+      white : Blanc
