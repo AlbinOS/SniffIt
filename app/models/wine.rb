@@ -7,8 +7,7 @@ class Wine < ActiveRecord::Base
   has_many :wine_natures, dependent: :destroy, inverse_of: :wine
   has_many :grapes, through: :wine_natures
 
-  validates :appellation, presence: true
-  validates :domaine, presence: true
+  validates :appellation, :domaine, :user, presence: true
   validates :vintage, numericality: { allow_blank: true, only_integer: true, greater_than_or_equal_to: Time.zone.now.year - 100, less_than_or_equal_to: Time.zone.now.year}
   validates :alcohol_rate, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 25 }
 
