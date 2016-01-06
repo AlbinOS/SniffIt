@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  nature: 
-  gustatory_analysis_id: 
-
-two:
-  nature: 
-  gustatory_analysis_id: 
+wine_one_with_chardonnay:
+  wine: wine_one
+  grape: grape_chardonnay

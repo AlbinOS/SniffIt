@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+grape_merlot: &black_grape
+  name: 'Merlot'
+  color: <%= Grape.colors[:black] %>
+
+grape_chardonnay: &white_grape
+  name: 'Chardonnay'
+  color: <%= Grape.colors[:white] %>
+
+grape_cabernet_sauvignon:
+  <<: *black_grape
+  name: 'Cabernet Sauvignon'
+
+grape_cabernet_franc:
+  <<: *black_grape
+  name: 'Cabernet Franc'
+
+grape_sauvignon_blanc:
+  <<: *white_grape
+  name: 'Sauvignon blanc'
+
+grape_riesling:
+  <<: *white_grape
+  name: 'Riesling'

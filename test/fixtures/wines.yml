@@ -1,11 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  appellation: MyString
-  vintage: 1
-  domaine: MyString
-
-two:
-  appellation: MyString
-  vintage: 1
-  domaine: MyString
+wine_one:
+  appellation: 'Chablis 1er Cru, Les Lys'
+  vintage: 2003
+  domaine: 'Sylvain et Didier Defaix'
+  user: user_albin
+  alcohol_rate: 13
