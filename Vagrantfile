@@ -137,7 +137,7 @@ Vagrant.configure(2) do |config|
   # Startup puma and nginx servers
   config.vm.provision "shell", privileged: false, run: "always", inline: <<-SHELL
     sudo service nginx stop
-    export CURRENT_DIR=$(pwd) && cd /vagrant && puma -b unix:///tmp/wine-pex-puma.sock -d --pidfile /tmp/wine-pex-puma.pid && cd $CURRENT_DIR && unset CURRENT_DIR
+    cd /vagrant && puma -b unix:///tmp/wine-pex-puma.sock -d --pidfile /tmp/wine-pex-puma.pid
     sudo service nginx start
   SHELL
 
