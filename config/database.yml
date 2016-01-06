@@ -50,6 +50,8 @@ development:
 test:
   <<: *default
   database: wine-pex_test
+  username: walle
+  password: eve
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -73,6 +75,6 @@ test:
 production:
   <<: *default
   database: wine-pex_production
-  username: wall-e
+  username: walle
   password: <%= ENV['WINE-PEX_DATABASE_PASSWORD'] %>
   pool: 128
