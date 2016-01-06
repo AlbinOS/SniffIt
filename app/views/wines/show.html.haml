@@ -9,6 +9,10 @@
   = @wine.appellation
 
 %p
+  %strong= t('wine.domaine') 
+  = @wine.domaine
+
+%p
   %strong= t('wine.vintage')
   - if @wine.vintage
     = @wine.vintage
@@ -16,8 +20,12 @@
     = t('wine.no_vintage')
 
 %p
-  %strong= t('wine.domaine') 
-  = @wine.domaine
+  %strong= t('wine.alcohol_rate')
+  = @wine.alcohol_rate
+
+%p
+  %strong= t('wine.vinification_type')
+  = t("wine.vinification_types.#{@wine.vinification_type}")
 
 %p
   = link_to t('navigation.back_to.wine_index'), wines_path, class: "btn btn-info", role: "button"

@@ -2,7 +2,9 @@ fr:
   actions:
     add: Ajouter
     new: Créer
+    create: Créer
     edit: Éditer
+    update: Éditer
     show: Afficher
     destroy: Supprimer
     show_details: Afficher les détails

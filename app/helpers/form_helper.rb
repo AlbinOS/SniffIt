@@ -24,6 +24,12 @@ module FormHelper
       end
     end
 
+    def full_select(attribute, selectable_options, options={})
+      content_tag(:fieldset, class: 'form-group') do
+        label(attribute, active_record_enum_caption_i18n(@object.class.name.downcase.to_sym, attribute)) + select(attribute, selectable_options, {}, {class: 'form-control c-select'})
+      end
+    end
+
     def full_submit(action, options={})
       submit_text = "#{active_record_action_i18n(action)} #{active_record_i18n(@object.class)}"
       submit(submit_text, options)

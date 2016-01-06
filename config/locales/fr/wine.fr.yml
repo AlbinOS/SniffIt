@@ -7,9 +7,10 @@ fr:
     index: Liste des vins
     grape: Cépage
     grapes: Cépages
+    alcohol_rate: Taux d'alcool
     vinification_type: Type de vinification
     vinification_types:
-      normal: Traditioninelle
+      normal: Traditionelle
       conversion: En conversion bio
       bio: Bio
       biodynamic: Biodynamie
