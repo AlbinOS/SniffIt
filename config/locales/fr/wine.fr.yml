@@ -5,3 +5,12 @@ fr:
     no_vintage: Non millésimé
     domaine: Domaine
     index: Liste des vins
+    grape: Cépage
+    grapes: Cépages
+    vinification_type: Type de vinification
+    vinification_types:
+      normal: Traditioninelle
+      conversion: En conversion bio
+      bio: Bio
+      biodynamic: Biodynamie
+
