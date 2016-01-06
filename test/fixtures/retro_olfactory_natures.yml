@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+retro_olfactory_one:
+  nature: 'Agrumes'
+  olfactory_analysis: olfactory_analysis_one
+
+retro_olfactory_two:
+  nature: 'Fruits rouges'
+  olfactory_analysis: olfactory_analysis_one

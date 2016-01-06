@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+olfactory_analysis_one:
+  intensity: <%= OlfactoryAnalysis.intensities[:relatively_aromatic] %>
+  diversity: <%= OlfactoryAnalysis.diversities[:rich] %>
+  quality: <%= OlfactoryAnalysis.qualities[:ordinary] %>
+  tasting: tasting_one
