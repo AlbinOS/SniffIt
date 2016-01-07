@@ -4,6 +4,10 @@
   = @wine.user.full_name
 
 %p
+  %strong= t('wine.couleur')
+  = t("wine.colors.#{@wine.color}")
+
+%p
   %strong= t('wine.appellation')
   = @wine.appellation
 

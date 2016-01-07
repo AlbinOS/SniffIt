@@ -1,10 +1,5 @@
 fr:
   visual_analysis:
-    color: Couleur
-    colors:
-      red: Rouge
-      white : Blanc
-      rose: Rosé
     intensity: Intensité de la couleur
     intensities:
       colorless: Incolore

@@ -1,5 +1,10 @@
 fr:
   wine:
+    color: Couleur
+    colors:
+      red: Rouge
+      white : Blanc
+      rose: Rosé
     appellation: Appellation
     vintage: Millésime
     no_vintage: Non millésimé

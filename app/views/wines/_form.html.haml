@@ -1,9 +1,10 @@
 = form_for @wine do |f|
+  = f.full_select :color, active_record_enum_list_i18n(Wine, :colors)
   = f.full_text_field :appellation, placeholder: 'Côte du Rhône, Médoc, ...', required: true
   = f.full_number_field :vintage
   = f.full_text_field :domaine, placeholder: 'Domaine des pères de l\'église, Château Pape Clément, ...', required: true
   = f.full_number_field :alcohol_rate, step: 0.5, required: true
   = f.full_select :vinification_type, active_record_enum_list_i18n(Wine, :vinification_types)
-  = f.full_select :grapes, options_from_collection_for_select(@grapes, 'id', 'name', @wine.grapes.map(&:id)), {}, {multiple: true}
+  = f.full_select :grapes, options_from_collection_for_select(@grapes, 'id', 'name', @wine.grapes_id), {}, {multiple: true}
   = link_to "#{t('navigation.back_to.wine_index')}", wines_path, class: 'btn btn-info', role: 'button'
   = f.full_submit action_name, class: 'btn btn-primary'

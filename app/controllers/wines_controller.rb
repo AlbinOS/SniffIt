@@ -25,6 +25,7 @@ class WinesController < ApplicationController
       redirect_to @wine
     else
       flash.now[:alert] = "Your data were not accepted, check your form below !"
+      @grapes = Grape.all
       render 'new'
     end
   end
@@ -34,6 +35,7 @@ class WinesController < ApplicationController
       redirect_to @wine
     else
       flash.now[:alert] = "Your data were not accepted, check your form below !"
+      @grapes = Grape.all
       render 'edit'
     end
   end
@@ -47,7 +49,7 @@ class WinesController < ApplicationController
   private
 
   def wine_params
-    params_permitted = params.require(:wine).permit(:appellation, :vintage, :domaine, :alcohol_rate, :vinification_type, grapes: [])
+    params_permitted = params.require(:wine).permit(:color, :appellation, :vintage, :domaine, :alcohol_rate, :vinification_type, grapes: [])
     if params_permitted[:grapes]
       params_permitted[:grapes] = params_permitted[:grapes].reject(&:blank?).collect { |g| Grape.find_by_id(Integer(g))  }
     end
