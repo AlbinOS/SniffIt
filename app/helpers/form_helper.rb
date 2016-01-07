@@ -24,9 +24,15 @@ module FormHelper
       end
     end
 
-    def full_select(attribute, selectable_options, options={})
+    def full_select(attribute, selectable_options, options={}, html_options={})
+      if html_options.key?(:multiple)
+        html_options[:class] = 'form-control'
+      else
+        html_options[:class] = 'form-control c-select'
+      end
+
       content_tag(:fieldset, class: 'form-group') do
-        label(attribute, active_record_enum_caption_i18n(@object.class.name.downcase.to_sym, attribute)) + select(attribute, selectable_options, {}, {class: 'form-control c-select'})
+        label(attribute, active_record_enum_caption_i18n(@object.class.name.downcase.to_sym, attribute)) + select(attribute, selectable_options, options, html_options)
       end
     end
 

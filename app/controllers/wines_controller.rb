@@ -12,9 +12,11 @@ class WinesController < ApplicationController
   end
 
   def new
+    @grapes = Grape.all
   end
 
   def edit
+    @grapes = Grape.all
   end
 
   def create
@@ -45,6 +47,10 @@ class WinesController < ApplicationController
   private
 
   def wine_params
-    params.require(:wine).permit(:appellation, :vintage, :domaine, :alcohol_rate, :vinification_type)
+    params_permitted = params.require(:wine).permit(:appellation, :vintage, :domaine, :alcohol_rate, :vinification_type, grapes: [])
+    if params_permitted[:grapes]
+      params_permitted[:grapes] = params_permitted[:grapes].reject(&:blank?).collect { |g| Grape.find_by_id(Integer(g))  }
+    end
+    params_permitted
   end
 end

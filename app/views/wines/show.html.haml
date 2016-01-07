@@ -1,5 +1,4 @@
 %h1= "#{t('actions.show')} #{t('activerecord.models.wine')}"
-
 %p
   %strong Ajouté par
   = @wine.user.full_name
@@ -26,6 +25,10 @@
 %p
   %strong= t('wine.vinification_type')
   = t("wine.vinification_types.#{@wine.vinification_type}")
+
+%p
+  %strong= t('wine.grapes')
+  = @wine.grapes.collect { |grape| grape.name }.join(', ')
 
 %p
   = link_to t('navigation.back_to.wine_index'), wines_path, class: "btn btn-info", role: "button"
