@@ -8,6 +8,10 @@ class TastingsController < ApplicationController
 
   def new
     @wine = Wine.find(params[:wine_id])
+    @tasting.build_visual_analysis()
+    @tasting.build_olfactory_analysis()
+    @tasting.build_gustatory_analysis()
+    @tasting.build_analysis_conclusion()
   end
 
   def edit
@@ -38,7 +42,7 @@ class TastingsController < ApplicationController
     @tasting.gustatory_analysis.assign_attributes(gustatory_analysis_params)
     @tasting.analysis_conclusion.assign_attributes(analysis_conclusion_params)
 
-    if @tasting.update(tasting_params)
+    if @tasting.save
       redirect_to wine_path(@tasting.wine)
     else
       flash.now[:alert] = "Your data were not accepted, check your form below !"
