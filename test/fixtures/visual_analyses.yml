@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+visual_analysis_one:
+  intensity: <%= VisualAnalysis.intensities[:colorless] %>
+  nuance: <%= VisualAnalysis.nuances[:grayed] %>
+  limpidity: <%= VisualAnalysis.limpidities[:troubled] %>
+  brightness: <%= VisualAnalysis.brightnesses[:dull] %>
+  density: <%= VisualAnalysis.densities[:fluid] %>
+  effervescence: <%= VisualAnalysis.effervescences[:still] %>
+  tasting: tasting_one

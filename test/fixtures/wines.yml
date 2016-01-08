@@ -6,3 +6,4 @@ wine_one:
   domaine: 'Sylvain et Didier Defaix'
   user: user_albin
   alcohol_rate: 13
+  color: <%= Wine.colors[:white] %>

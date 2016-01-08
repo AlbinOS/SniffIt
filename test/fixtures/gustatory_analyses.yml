@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gustatory_analysis_one:
+  acidity: <%= GustatoryAnalysis.acidities[:still] %>
+  alcohol: <%= GustatoryAnalysis.alcohols[:diluted] %>
+  mellowness: <%= GustatoryAnalysis.mellownesses[:biting] %>
+  tannin_quantity: <%= GustatoryAnalysis.tannin_quantities[:informed] %>
+  tannin_quality: <%= GustatoryAnalysis.tannin_qualities[:rude] %>
+  tasting: tasting_one

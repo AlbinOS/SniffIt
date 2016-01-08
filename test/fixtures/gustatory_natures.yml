@@ -1,0 +1,5 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gustatory_nature_one:
+  nature: 'Amer'
+  gustatory_analysis: gustatory_analysis_one

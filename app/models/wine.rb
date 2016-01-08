@@ -17,7 +17,6 @@ class Wine < ActiveRecord::Base
   end
 
   def grapes_id
-    puts grapes
     if grapes.empty?
       []
     else

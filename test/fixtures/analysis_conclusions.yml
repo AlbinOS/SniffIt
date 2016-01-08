@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+analysis_conclusion_one:
+  balance: <%= AnalysisConclusion.balances[:balanced] %>
+  pai: <%= AnalysisConclusion.pais[:very_short] %>
+  overall_sentiment: <%= AnalysisConclusion.overall_sentiments[:insufficient] %>
+  future: <%= AnalysisConclusion.futures[:very_young] %>
+  tasting: tasting_one

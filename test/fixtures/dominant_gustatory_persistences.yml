@@ -1,0 +1,5 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+dominant_gustatory_persistence_one:
+  nature: 'Tannin'
+  analysis_conclusion: analysis_conclusion_one
