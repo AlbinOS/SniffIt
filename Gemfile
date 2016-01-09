@@ -53,3 +53,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+# Only test gems
+group :development, :test do
+  # Use code climate for test coverage
+  gem "codeclimate-test-reporter", require: nil
+end
