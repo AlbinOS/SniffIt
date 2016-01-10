@@ -118,8 +118,10 @@ Vagrant.configure(2) do |config|
     source /home/vagrant/.bash_profile
     source /home/vagrant/.bashrc
 
-    rvm install ruby --latest
-    cd /vagrant && bundle install
+    rvm install ruby 2.2.4
+    sudo apt-get install -y libgmp-dev
+    gem install bundler
+    cd /vagrant && bundle install --jobs=3
 
     RAILS_ENV=development rake db:create
     RAILS_ENV=development rake db:migrate
