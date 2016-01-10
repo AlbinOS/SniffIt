@@ -25,6 +25,9 @@ class TastingsController < ApplicationController
     @tasting.user = current_user
     @tasting.build_visual_analysis(visual_analysis_params)
     @tasting.build_olfactory_analysis(olfactory_analysis_params)
+    if params[:olfactory_analysis] && params[:olfactory_analysis][:olfactory_natures]
+      build_olfactory_natures(@tasting.olfactory_analysis, params[:olfactory_analysis][:olfactory_natures])
+    end
     @tasting.build_gustatory_analysis(gustatory_analysis_params)
     @tasting.build_analysis_conclusion(analysis_conclusion_params)
 
@@ -66,7 +69,11 @@ class TastingsController < ApplicationController
   end
 
   def olfactory_analysis_params
-    params.require(:olfactory_analysis).permit(:intensity, :diversity, :quality)
+    params_permitted = params.require(:olfactory_analysis).permit(:intensity, :diversity, :quality, :olfactory_natures)
+    if params_permitted[:olfactory_natures]
+      params_permitted.delete :olfactory_natures
+    end
+    params_permitted
   end
 
   def gustatory_analysis_params
@@ -75,6 +82,12 @@ class TastingsController < ApplicationController
 
   def analysis_conclusion_params
     params.require(:analysis_conclusion).permit(:balance, :pai, :overall_sentiment, :future)
+  end
+
+  def build_olfactory_natures(olfactory_analysis, olfactory_natures)
+    olfactory_natures.split(', ').each do |olfactory_nature|
+      oflactory_analysis.olfacotry_natures.build(nature: olfactory_nature)
+    end
   end
 
 end
