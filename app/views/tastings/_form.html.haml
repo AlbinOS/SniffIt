@@ -12,6 +12,7 @@
 = full_select_tag :olfactory_analysis, :intensity, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :intensities), @tasting.olfactory_analysis.intensity)
 = full_select_tag :olfactory_analysis, :diversity, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :diversities), @tasting.olfactory_analysis.diversity)
 = full_select_tag :olfactory_analysis, :quality, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :qualities), @tasting.olfactory_analysis.quality)
+= text_field :olfactory_analysis, :olfactory_natures
 
 %h2= t('activerecord.models.gustatory_analysis')
 %hr.m-y-2

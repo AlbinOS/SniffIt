@@ -21,6 +21,7 @@ class TastingsController < ApplicationController
   def create
     @wine = Wine.find(params[:wine_id])
 
+    puts params.inspect
     @tasting = @wine.tastings.build(tasting_params)
     @tasting.user = current_user
     @tasting.build_visual_analysis(visual_analysis_params)
