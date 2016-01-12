@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TastingsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "build_olfactory_natures" do
+    assert true
+  end
 end

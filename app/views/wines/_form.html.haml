@@ -7,4 +7,4 @@
   = f.full_select :vinification_type, active_record_enum_list_i18n(Wine, :vinification_types)
   = f.full_select :grapes, options_from_collection_for_select(@grapes, 'id', 'name', @wine.grapes_id), {}, {multiple: true}
   = link_to "#{t('navigation.back_to.wine_index')}", wines_path, class: 'btn btn-info', role: 'button'
-  = f.full_submit action_name, class: 'btn btn-primary'
+  = f.full_submit class: 'btn btn-primary'

@@ -1,4 +1,5 @@
 class OlfactoryAnalysis < ActiveRecord::Base
+  include Naturable
   belongs_to :tasting, inverse_of: :olfactory_analysis
 
   enum intensity: [:very_weak, :low, :pretty_weak, :normal, :relatively_aromatic, :aromatic, :powerful]

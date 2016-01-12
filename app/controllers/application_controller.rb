@@ -36,4 +36,14 @@ class ApplicationController < ActionController::Base
       authorize resource
     end
   end
+
+  def remove_permitted_params(permitted_params, params_to_remove)
+    params_to_remove.each do |param_to_remove|
+      if permitted_params.key?(param_to_remove)
+        permitted_params.delete param_to_remove
+      end
+    end
+    permitted_params
+  end
+
 end

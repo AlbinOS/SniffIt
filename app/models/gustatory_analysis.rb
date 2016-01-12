@@ -1,4 +1,5 @@
 class GustatoryAnalysis < ActiveRecord::Base
+  include Naturable
   belongs_to :tasting, inverse_of: :gustatory_analysis
 
   enum acidity: [:still, :fresh, :bright, :nervous, :green, :very_green]
