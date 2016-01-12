@@ -1,4 +1,4 @@
-module FormHelper
+module FormsHelper
   include I18nHelper
 
   class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
@@ -32,7 +32,7 @@ module FormHelper
       end
 
       content_tag(:fieldset, class: 'form-group') do
-        label(attribute, active_record_enum_caption_i18n(@object.class.name.downcase.to_sym, attribute)) + select(attribute, selectable_options, options, html_options)
+        label(attribute, active_record_enum_caption_i18n(@object.class.name.underscore.to_sym, attribute)) + select(attribute, selectable_options, options, html_options)
       end
     end
 
@@ -45,7 +45,7 @@ module FormHelper
   ActionView::Base.default_form_builder = BootstrapFormBuilder
 
   def full_text_field_for(object, attribute, options={})
-    object_class_name_as_symbol = object.class.name.downcase.to_sym
+    object_class_name_as_symbol = object.class.name.underscore.to_sym
     content_tag(:fieldset, class: 'form-group') do
       label_text = "#{active_record_attribute_i18n(object.class, attribute)}" + (object.errors[attribute].any? ? " (" + object.errors[attribute].join(', ').downcase + ")" : "")
 
