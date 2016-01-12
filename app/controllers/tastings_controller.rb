@@ -25,16 +25,13 @@ class TastingsController < ApplicationController
     @tasting.user = current_user
     @tasting.build_visual_analysis(visual_analysis_params)
     @tasting.build_olfactory_analysis(olfactory_analysis_params)
-    if params[:olfactory_analysis]
-      if params[:olfactory_analysis][:olfactory_natures]
-        @tasting.olfactory_analysis.build_natures(:olfactory_natures, params[:olfactory_analysis][:olfactory_natures])
-      end
-      if params[:olfactory_analysis][:retro_olfactory_natures]
-        @tasting.olfactory_analysis.build_natures(:retro_olfactory_natures, params[:olfactory_analysis][:retro_olfactory_natures])
-      end
-    end
+    @tasting.olfactory_analysis.build_natures(:olfactory_natures, params[:olfactory_analysis].fetch(:olfactory_natures, ''))
+    @tasting.olfactory_analysis.build_natures(:retro_olfactory_natures, params[:olfactory_analysis].fetch(:retro_olfactory_natures, ''))
     @tasting.build_gustatory_analysis(gustatory_analysis_params)
+    @tasting.gustatory_analysis.build_natures(:gustatory_natures, params[:gustatory_analysis].fetch(:gustatory_natures, ''))
     @tasting.build_analysis_conclusion(analysis_conclusion_params)
+    @tasting.analysis_conclusion.build_natures(:dominant_gustatory_persistences, params[:analysis_conclusion].fetch(:dominant_gustatory_persistences, ''))
+    @tasting.analysis_conclusion.build_natures(:aftertaste_persistences, params[:analysis_conclusion].fetch(:aftertaste_persistences, ''))
 
     if @tasting.save
       redirect_to [@wine, @tasting]
@@ -47,8 +44,13 @@ class TastingsController < ApplicationController
   def update
     @tasting.visual_analysis.assign_attributes(visual_analysis_params)
     @tasting.olfactory_analysis.assign_attributes(olfactory_analysis_params)
+    @tasting.olfactory_analysis.replace_natures(:olfactory_natures, params[:olfactory_analysis].fetch(:olfactory_natures))
+    @tasting.olfactory_analysis.replace_natures(:retro_olfactory_natures, params[:olfactory_analysis].fetch(:retro_olfactory_natures))
     @tasting.gustatory_analysis.assign_attributes(gustatory_analysis_params)
+    @tasting.gustatory_analysis.replace_natures(:gustatory_natures, params[:gustatory_analysis].fetch(:gustatory_natures, ''))
     @tasting.analysis_conclusion.assign_attributes(analysis_conclusion_params)
+    @tasting.analysis_conclusion.replace_natures(:dominant_gustatory_persistences, params[:analysis_conclusion].fetch(:dominant_gustatory_persistences, ''))
+    @tasting.analysis_conclusion.replace_natures(:aftertaste_persistences, params[:analysis_conclusion].fetch(:aftertaste_persistences, ''))
 
     if @tasting.save
       redirect_to wine_path(@tasting.wine)
@@ -74,19 +76,15 @@ class TastingsController < ApplicationController
   end
 
   def olfactory_analysis_params
-    params_permitted = params.require(:olfactory_analysis).permit(:intensity, :diversity, :quality, :olfactory_natures)
-    if params_permitted[:olfactory_natures]
-      params_permitted.delete :olfactory_natures
-    end
-    params_permitted
+    remove_permitted_params(params.require(:olfactory_analysis).permit(:intensity, :diversity, :quality, :olfactory_natures, :retro_olfactory_natures), [:olfactory_natures, :retro_olfactory_natures])
   end
 
   def gustatory_analysis_params
-    params.require(:gustatory_analysis).permit(:acidity, :alcohol, :mellowness, :tannin_quantity, :tannin_quality)
+    remove_permitted_params(params.require(:gustatory_analysis).permit(:acidity, :alcohol, :mellowness, :tannin_quantity, :tannin_quality, :gustatory_natures), [:gustatory_natures])
   end
 
   def analysis_conclusion_params
-    params.require(:analysis_conclusion).permit(:balance, :pai, :overall_sentiment, :future)
+    remove_permitted_params(params.require(:analysis_conclusion).permit(:balance, :pai, :overall_sentiment, :future, :dominant_gustatory_persistences, :aftertaste_persistences), [:dominant_gustatory_persistences, :aftertaste_persistences])
   end
 
 end

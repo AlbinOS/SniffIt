@@ -1,4 +1,5 @@
 class OlfactoryAnalysis < ActiveRecord::Base
+  include Naturable
   belongs_to :tasting, inverse_of: :olfactory_analysis
 
   enum intensity: [:very_weak, :low, :pretty_weak, :normal, :relatively_aromatic, :aromatic, :powerful]
@@ -9,10 +10,4 @@ class OlfactoryAnalysis < ActiveRecord::Base
   has_many :retro_olfactory_natures, dependent: :destroy, inverse_of: :olfactory_analysis, autosave: true
 
   validates :tasting, presence: true
-
-  def build_natures(nature_type, natures)
-    natures.split(',').each do |nature|
-      self.send(nature_type).build(nature: nature.strip.capitalize)
-    end
-  end
 end

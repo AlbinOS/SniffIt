@@ -12,8 +12,8 @@
 = full_select_tag :olfactory_analysis, :intensity, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :intensities), @tasting.olfactory_analysis.intensity)
 = full_select_tag :olfactory_analysis, :diversity, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :diversities), @tasting.olfactory_analysis.diversity)
 = full_select_tag :olfactory_analysis, :quality, options_for_select(active_record_enum_list_i18n(OlfactoryAnalysis, :qualities), @tasting.olfactory_analysis.quality)
-= full_text_field_for OlfactoryAnalysis.new, :olfactory_natures, placeholder: 'Fruits rouges, Fruits jaunes, ...'
-= full_text_field_for OlfactoryAnalysis.new, :retro_olfactory_natures, placeholder: 'Fruits frais, ...'
+= full_text_field_for @tasting.olfactory_analysis, :olfactory_natures, placeholder: 'Fruits rouges, Fruits jaunes, ...', value: @tasting.olfactory_analysis.natures(:olfactory_natures)
+= full_text_field_for @tasting.olfactory_analysis, :retro_olfactory_natures, placeholder: 'Fruits frais, ...', value: @tasting.olfactory_analysis.natures(:retro_olfactory_natures)
 
 %h2= t('activerecord.models.gustatory_analysis')
 %hr.m-y-2
@@ -22,9 +22,12 @@
 = full_select_tag :gustatory_analysis, :mellowness, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :mellownesses), @tasting.gustatory_analysis.mellowness)
 = full_select_tag :gustatory_analysis, :tannin_quantity, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :tannin_quantities), @tasting.gustatory_analysis.tannin_quantity)
 = full_select_tag :gustatory_analysis, :tannin_quality, options_for_select(active_record_enum_list_i18n(GustatoryAnalysis, :tannin_qualities), @tasting.gustatory_analysis.tannin_quality)
+= full_text_field_for @tasting.gustatory_analysis, :gustatory_natures, placeholder: 'Amer, Perlant, Iodé, ...', value: @tasting.gustatory_analysis.natures(:gustatory_natures)
 
 %h2= t('activerecord.models.analysis_conclusion')
 %hr.m-y-2
+= full_text_field_for @tasting.analysis_conclusion, :dominant_gustatory_persistences, placeholder: 'Acide, Tannin, Moelleux, ...', value: @tasting.analysis_conclusion.natures(:dominant_gustatory_persistences)
+= full_text_field_for @tasting.analysis_conclusion, :aftertaste_persistences, placeholder: 'Assèchant, ...', value: @tasting.analysis_conclusion.natures(:aftertaste_persistences)
 = full_select_tag :analysis_conclusion, :balance, options_for_select(active_record_enum_list_i18n(AnalysisConclusion, :balances), @tasting.analysis_conclusion.balance)
 = full_select_tag :analysis_conclusion, :pai, options_for_select(active_record_enum_list_i18n(AnalysisConclusion, :pais), @tasting.analysis_conclusion.pai)
 = full_select_tag :analysis_conclusion, :overall_sentiment, options_for_select(active_record_enum_list_i18n(AnalysisConclusion, :overall_sentiments), @tasting.analysis_conclusion.overall_sentiment)

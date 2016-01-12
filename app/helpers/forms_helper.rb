@@ -36,8 +36,13 @@ module FormsHelper
       end
     end
 
-    def full_submit(action, options={})
-      submit_text = "#{active_record_action_i18n(action)} #{active_record_i18n(@object.class)}"
+    def full_submit(options={})
+      if @object.persisted? 
+        action_text = 'update'
+      else
+        action_text = 'create'
+      end
+      submit_text = "#{active_record_action_i18n(action_text)} #{active_record_i18n(@object.class)}"
       submit(submit_text, options)
     end
   end

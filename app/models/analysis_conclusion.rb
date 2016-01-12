@@ -1,4 +1,5 @@
 class AnalysisConclusion < ActiveRecord::Base
+  include Naturable
   belongs_to :tasting, inverse_of: :analysis_conclusion
 
   enum balance: [:balanced, :acid, :tannin, :mellow]
