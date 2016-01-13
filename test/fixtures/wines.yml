@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-wine_one:
+wine_albin_one:
   appellation: 'Chablis 1er Cru, Les Lys'
   vintage: 2003
   domaine: 'Sylvain et Didier Defaix'

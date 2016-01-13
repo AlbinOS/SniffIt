@@ -56,4 +56,9 @@ class WineTest < ActiveSupport::TestCase
     wine.grapes = [Grape.first, Grape.second]
     assert_equal [Grape.first.id, Grape.second.id], wine.grapes_id
   end
+
+  test "wine grapes_id empty case method" do
+    wine = Wine.new
+    assert_equal [], wine.grapes_id
+  end
 end

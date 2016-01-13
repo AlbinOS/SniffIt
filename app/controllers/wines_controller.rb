@@ -22,20 +22,20 @@ class WinesController < ApplicationController
   def create
     @wine.user = current_user
     if @wine.save
-      redirect_to @wine
+      redirect_to @wine, notice: I18n.t('flashes.wines.create', wine: @wine.full_name)
     else
-      flash.now[:alert] = "Your data were not accepted, check your form below !"
       @grapes = Grape.all
+      flash.now[:alert] = I18n.t('flashes.forms.not_accepted')
       render 'new'
     end
   end
 
   def update
     if @wine.update(wine_params)
-      redirect_to @wine
+      redirect_to @wine, notice: I18n.t('flashes.wines.update', wine: @wine.full_name)
     else
-      flash.now[:alert] = "Your data were not accepted, check your form below !"
       @grapes = Grape.all
+      flash.now[:alert] = I18n.t('flashes.forms.not_accepted')
       render 'edit'
     end
   end
@@ -43,7 +43,7 @@ class WinesController < ApplicationController
   def destroy
     @wine.destroy
 
-    redirect_to wines_path
+    redirect_to wines_path, notice: I18n.t('flashes.wines.destroy', wine: @wine.full_name)
   end
 
   private

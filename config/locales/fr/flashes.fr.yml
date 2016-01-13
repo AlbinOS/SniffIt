@@ -1,0 +1,12 @@
+fr:
+  flashes:
+    forms:
+      not_accepted: Les données entrées ne sont pas valide, veuillez vérifier le formulaire ci-dessous.
+    wines:
+      destroy: Le vin %{wine} a été supprimé.
+      create: Le vin %{wine} a été créé.
+      update: Le vin %{wine} a été mis à jour.
+    tastings:
+      destroy: La dégustation %{tasting} a été supprimée.
+      create: La dégustation %{tasting} a été créée.
+      update: La dégustation %{tasting} a été mise à jour.
