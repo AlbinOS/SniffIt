@@ -7,6 +7,20 @@ fr:
       create: Le vin %{wine} a été créé.
       update: Le vin %{wine} a été mis à jour.
     tastings:
-      destroy: La dégustation %{tasting} a été supprimée.
-      create: La dégustation %{tasting} a été créée.
-      update: La dégustation %{tasting} a été mise à jour.
+      destroy: La dégustation sur le vin %{wine} a été supprimée.
+      create: La dégustation sur le vin %{wine} a été créée.
+      update: La dégustation sur le vin %{wine} a été mise à jour.
+  pundit:
+    default: Vous ne pouvez pas effectuer cette action.
+    wine_policy:
+      new?: Vous ne pouvez pas créer de vin !
+      edit?: Vous ne pouvez pas éditer ce vin !
+      create?: Vous ne pouvez pas créer de vin !
+      update?: Vous ne pouvez pas éditer ce vin !
+      destroy?: Vous ne pouvez pas supprimer ce vin !
+    tasting_policy:
+      new?: Vous ne pouvez pas créer de dégustation !
+      edit?: Vous ne pouvez pas éditer cette dégustation !
+      create?: Vous ne pouvez pas créer de dégustation !
+      update?: Vous ne pouvez pas éditer cette dégustation !
+      destroy?: Vous ne pouvez pas supprimer cette dégustation !

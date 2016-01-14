@@ -16,7 +16,7 @@
         %td= wine.domaine
         %td= wine.vintage
         %td
-          = link_to t('actions.show.details'), wine_path(wine), class: 'btn btn-info', role: 'button'
+          = link_to t('actions.show_details'), wine_path(wine), class: 'btn btn-info', role: 'button'
           - if policy(wine).edit?
             = link_to t('actions.edit'), edit_wine_path(wine), class: 'btn btn-warning', role: 'button'
           - if policy(wine).destroy?

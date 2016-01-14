@@ -39,6 +39,9 @@ gem 'rolify'
 # Use puma as application server
 gem 'puma'
 
+# Use rollbar for error reporting
+gem 'rollbar', '~> 2.5.0'
+
 # Develoment and test gems
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

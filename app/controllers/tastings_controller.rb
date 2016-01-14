@@ -34,9 +34,9 @@ class TastingsController < ApplicationController
     @tasting.analysis_conclusion.build_natures(:aftertaste_persistences, params[:analysis_conclusion].fetch(:aftertaste_persistences, ''))
 
     if @tasting.save
-      redirect_to [@wine, @tasting]
+      redirect_to [@wine, @tasting], notice: I18n.t('flashes.tastings.create', wine: @wine.full_name)
     else
-      flash.now[:alert] = "Your data were not accepted, check your form below !"
+      flash.now[:alert] = I18n.t('flashes.forms.not_accepted')
       render "wines/show"
     end
   end
@@ -53,9 +53,9 @@ class TastingsController < ApplicationController
     @tasting.analysis_conclusion.replace_natures(:aftertaste_persistences, params[:analysis_conclusion].fetch(:aftertaste_persistences, ''))
 
     if @tasting.save
-      redirect_to wine_path(@tasting.wine)
+      redirect_to wine_path(@tasting.wine), notice: I18n.t('flashes.tastings.update', wine: @tasting.wine.full_name)
     else
-      flash.now[:alert] = "Your data were not accepted, check your form below !"
+      flash.now[:alert] = I18n.t('flashes.forms.not_accepted')
       render "wines/show"
     end
   end
@@ -63,7 +63,8 @@ class TastingsController < ApplicationController
   def destroy
     @wine = @tasting.wine
     @tasting.destroy
-    redirect_to wine_path(@wine)
+
+    redirect_to wine_path(@wine), notice: I18n.t('flashes.tastings.destroy', wine: @wine.full_name)
   end
 
   private
