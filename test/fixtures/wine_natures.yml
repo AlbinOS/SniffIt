@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-wine_one_with_chardonnay:
-  wine: wine_one
+wine_nature_one:
+  wine: wine_albin
   grape: grape_chardonnay

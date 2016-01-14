@@ -15,9 +15,9 @@ class WinesControllerTest < ActionController::TestCase
   authentification_test_for :patch, :update, id: 1
   authentification_test_for :delete, :destroy, id: 1
 
-  authorization_test_for :get, :edit, 'users(:user_alianaya)', id: 'wines(:wine_albin_one).id'
-  authorization_test_for :patch, :update, 'users(:user_alianaya)', id: 'wines(:wine_albin_one).id'
-  authorization_test_for :delete, :destroy, 'users(:user_alianaya)', id: 'wines(:wine_albin_one).id'
+  authorization_test_for :get, :edit, 'users(:user_alianaya)', id: 'wines(:wine_one).id'
+  authorization_test_for :patch, :update, 'users(:user_alianaya)', id: 'wines(:wine_one).id'
+  authorization_test_for :delete, :destroy, 'users(:user_alianaya)', id: 'wines(:wine_one).id'
 
   test "should get index" do
     sign_in users(:user_albin)
@@ -28,7 +28,7 @@ class WinesControllerTest < ActionController::TestCase
 
   test "should get show" do
     sign_in users(:user_albin)
-    wine = wines(:wine_albin_one)
+    wine = wines(:wine_one)
     get :show, id: wine.id
     assert_response :success
     assert_equal wine, assigns(:wine)
@@ -44,7 +44,7 @@ class WinesControllerTest < ActionController::TestCase
 
   test "should get edit" do
     sign_in users(:user_albin)
-    wine = wines(:wine_albin_one)
+    wine = wines(:wine_one)
     get :edit, id: wine.id
     assert_response :success
     assert_equal wine, assigns(:wine)
@@ -58,7 +58,7 @@ class WinesControllerTest < ActionController::TestCase
       post :create, wine: {color: Wine.colors.keys.first, appellation: 'Châteauneuf-du-Pape', vintage: 2010, domaine: 'Domaine des pères de l\'Église', alcohol_rate: 12.5, vinification_type: Wine.vinification_types.keys.first, grapes: [Grape.first.id, Grape.second.id]}
     end
     assert_not_nil assigns(:wine)
-    assert_redirected_to wine_path(assigns(:wine))
+    assert_redirected_to assigns(:wine)
     assert_equal Wine.last, assigns(:wine)
     assert_equal I18n.t('flashes.wines.create', wine: assigns(:wine).full_name), flash[:notice]
   end
@@ -77,9 +77,9 @@ class WinesControllerTest < ActionController::TestCase
   test "should update wine" do
     albin = users(:user_albin)
     sign_in albin
-    wine = wines(:wine_albin_one)
+    wine = wines(:wine_one)
     patch :update, id: wine.id, wine: {color: Wine.colors.keys.second}
-    assert_redirected_to wine_path(assigns(:wine))
+    assert_redirected_to wine
     assert_equal Wine.find(wine.id), assigns(:wine)
     assert_not_equal wine.color, assigns(:wine).color
     assert_not_equal wine.color, Wine.find(wine.id).color
@@ -89,7 +89,7 @@ class WinesControllerTest < ActionController::TestCase
   test "should not update wine" do
     albin = users(:user_albin)
     sign_in albin
-    wine = wines(:wine_albin_one)
+    wine = wines(:wine_one)
     patch :update, id: wine.id, wine: {color: Wine.colors.keys.second, alcohol_rate: "wrong_input"}
     assert_template :edit
     assert_equal Wine.find(wine.id), assigns(:wine)
@@ -103,7 +103,7 @@ class WinesControllerTest < ActionController::TestCase
   test "should destroy wine" do
     albin = users(:user_albin)
     sign_in albin
-    wine = wines(:wine_albin_one)
+    wine = wines(:wine_one)
     assert_difference('Wine.count', -1) do
       delete :destroy, id: wine.id
     end

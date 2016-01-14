@@ -1,5 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-tasting_albin_one_wine_albin_one:
+tasting_one:
   user: user_albin
-  wine: wine_albin_one
+  wine: wine_one
