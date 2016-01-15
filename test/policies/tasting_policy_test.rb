@@ -1,23 +1,20 @@
 require 'test_helper'
 require 'helpers/policies_test_helper'
 
-class TastingPolicyTest < ActiveSupport::TestCase
+class ApplicationPolicyTest < ActiveSupport::TestCase
   include PoliciesTestHelper
 
   def setup
-    @owner = users(:user_albin)
-    @not_owner = users(:user_alianaya)
-    @tasting = tastings(:tasting_one)
+    @user = users(:user_albin)
+    @record = wines(:wine_one)
   end
 
   def teardown
-    @owner = nil
-    @not_owner = nil
-    @tasting = nil
+    @user = nil
+    @record = nil
   end
 
-  assert_permit_for :owner, :tasting, except: :index
-  assert_permit_for :not_owner, :tasting, only: [:show, :new, :create]
-  refute_permit_for :not_owner, :tasting, only: [:edit, :update, :destroy]
+  assert_permit_for :user, :record, only: [:show]
+  refute_permit_for :user, :record, except: [:show]
 
 end
