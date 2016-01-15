@@ -67,6 +67,22 @@ class TastingsControllerTest < ActionController::TestCase
     assert_equal I18n.t('flashes.tastings.create', wine: wine.full_name), flash[:notice]
   end
 
+  test "should not create tasting" do
+    albin = users(:user_albin)
+    sign_in albin
+    wine = albin.wines.first
+    assert_no_difference('Tasting.count') do
+      post :create,
+        wine_id: wine.id,
+        tasting: {},
+        olfactory_analysis: {olfactory_natures: ' '}
+    end
+    assert_not_nil assigns(:wine)
+    assert_not_nil assigns(:tasting)
+    assert_template 'wines/show'
+    assert_equal I18n.t('flashes.forms.not_accepted'), flash[:alert]
+  end
+
   test "should update tasting" do
     albin = users(:user_albin)
     sign_in albin
@@ -75,12 +91,31 @@ class TastingsControllerTest < ActionController::TestCase
     patch :update,
       wine_id: tasting.wine.id,
       id: tasting.id,
-      visual_analysis: {intensity: VisualAnalysis.intensities.keys.second}
+      visual_analysis: {intensity: VisualAnalysis.intensities.keys.second},
+      olfactory_analysis: {olfactory_natures: 'Fruits jaune, Pèche'}
     assert_redirected_to [tasting.wine, tasting]
     assert_equal Tasting.find(tasting.id), assigns(:tasting)
     assert_not_equal visual_analysis.intensity, assigns(:tasting).visual_analysis.intensity
     assert_not_equal visual_analysis.intensity, Tasting.find(tasting.id).visual_analysis.intensity
     assert_equal I18n.t('flashes.tastings.update', wine: tasting.wine.full_name), flash[:notice]
+  end
+
+  test "should not update tasting" do
+    albin = users(:user_albin)
+    sign_in albin
+    tasting = tastings(:tasting_one)
+    visual_analysis = visual_analyses(:visual_analysis_one)
+    patch :update,
+      wine_id: tasting.wine.id,
+      id: tasting.id,
+      visual_analysis: {intensity: VisualAnalysis.intensities.keys.second},
+      olfactory_analysis: {retro_olfactory_natures: ' '}
+    assert_template 'wines/show'
+    assert_equal Tasting.find(tasting.id), assigns(:tasting)
+    assert_not_equal visual_analysis.intensity, assigns(:tasting).visual_analysis.intensity
+    assert_equal visual_analysis.intensity, Tasting.find(tasting.id).visual_analysis.intensity
+    assert_not_nil assigns(:tasting).errors['olfactory_analysis.olfactory_natures.nature']
+    assert_equal I18n.t('flashes.forms.not_accepted'), flash[:alert]
   end
 
   test "should destroy tasting" do

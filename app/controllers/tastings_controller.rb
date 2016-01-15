@@ -37,11 +37,13 @@ class TastingsController < ApplicationController
       redirect_to [@wine, @tasting], notice: I18n.t('flashes.tastings.create', wine: @wine.full_name)
     else
       flash.now[:alert] = I18n.t('flashes.forms.not_accepted')
-      render "wines/show"
+      render 'wines/show'
     end
   end
 
   def update
+    @wine = @tasting.wine
+
     @tasting.visual_analysis.assign_attributes(visual_analysis_params)
     @tasting.olfactory_analysis.assign_attributes(olfactory_analysis_params)
     @tasting.olfactory_analysis.replace_natures(:olfactory_natures, params.fetch(:olfactory_analysis, {}).fetch(:olfactory_natures, ''))
@@ -53,10 +55,10 @@ class TastingsController < ApplicationController
     @tasting.analysis_conclusion.replace_natures(:aftertaste_persistences, params.fetch(:analysis_conclusion, {}).fetch(:aftertaste_persistences, ''))
 
     if @tasting.save
-      redirect_to [@tasting.wine, @tasting], notice: I18n.t('flashes.tastings.update', wine: @tasting.wine.full_name)
+      redirect_to [@wine, @tasting], notice: I18n.t('flashes.tastings.update', wine: @wine.full_name)
     else
       flash.now[:alert] = I18n.t('flashes.forms.not_accepted')
-      render "wines/show"
+      render 'wines/show'
     end
   end
 

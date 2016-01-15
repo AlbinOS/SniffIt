@@ -69,7 +69,9 @@ class WinesControllerTest < ActionController::TestCase
     assert_no_difference('Wine.count') do
       post :create, wine: {alcohol_rate: "wrong_input"}
     end
+    assert_not_nil assigns(:wine)
     assert_template :new
+    assert_not_nil assigns(:wine).errors[:alcohol_rate]
     assert_equal Grape.all.count, assigns(:grapes).count
     assert_equal I18n.t('flashes.forms.not_accepted'), flash[:alert]
   end
