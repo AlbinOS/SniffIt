@@ -40,7 +40,7 @@ gem 'rolify'
 gem 'puma'
 
 # Use rollbar for error reporting
-gem 'rollbar', '~> 2.5.0'
+gem "bugsnag"
 
 # Develoment and test gems
 group :development, :test do
