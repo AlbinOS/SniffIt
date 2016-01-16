@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  # Users
   devise_for :users
-  # Wines
+  resources :users, only: [:show]
+
+  # Wines/Tastings
   resources :wines do
     resources :tastings
   end

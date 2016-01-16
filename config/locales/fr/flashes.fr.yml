@@ -24,3 +24,11 @@ fr:
       create?: Vous ne pouvez pas créer de dégustation !
       update?: Vous ne pouvez pas éditer cette dégustation !
       destroy?: Vous ne pouvez pas supprimer cette dégustation !
+    user_policy:
+      index?: Vous ne pouvez pas obtenir la liste des utilisateurs !
+      show?: Vous ne pouvez pas visualiser les informations cet utilisateur !
+      new?: Vous ne pouvez pas créer d'utilisateur !
+      edit?: Vous ne pouvez pas éditer cet utilisateur !
+      create?: Vous ne pouvez pas créer d'utilisateur !
+      update?: Vous ne pouvez pas éditer cet utilisateur !
+      destroy?: Vous ne pouvez pas supprimer cet utilisateur !

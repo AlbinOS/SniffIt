@@ -17,3 +17,10 @@ user_john:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   first_name: 'John'
   last_name: 'Doe'
+
+user_admin:
+  email: 'admin@gopex.be'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  first_name: 'Admin'
+  last_name: 'GoPex'
+  roles: role_admin

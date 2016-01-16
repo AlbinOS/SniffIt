@@ -13,9 +13,9 @@ ActiveRecord::Fixtures.create_fixtures(Rails.root.join('test/fixtures'), 'grapes
 
 # Create a root admin user
 user = User.new
-user.email = 'gilles.albin@gmail.com'
-user.password = 'wootwoot'
-user.password_confirmation = 'wootwoot'
+user.email = 'gilles.albin@gopex.be'
+user.password = 'password'
+user.password_confirmation = 'password'
 user.first_name = 'Albin'
 user.last_name = 'Gilles'
 user.save
